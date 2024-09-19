@@ -29,7 +29,7 @@ for url, folder in urls.items():
     re_replace = {
         r'<div className="carousel">((?:.|\n)+?<\/div>)<\/div>': "<Carousel/>",
         r'<Image src="([^\s]+?)"[\w\s"=]+?className="icon_img" ?\/>': {
-            "https://cdn.prod.website-files.com/66d4b2638b4f7b26a332418f/66ec5a2433480bbc3ff56969_favicon.webp": "favicon.webp",
+            "https://cdn.prod.website-files.com/66d4b2638b4f7b26a332418f/66ec5a2433480bbc3ff56969_favicon.webp": "/favicon.webp",
         },
     }
 
