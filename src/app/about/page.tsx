@@ -1,7 +1,7 @@
 import Script from "next/script";
-import RawWebflow from "./landpage/raw-webflow";
+import RawWebflow from "./raw-webflow";
 
-export default function LandPage() {
+export default function About() {
 	return (
 		<><main className="body">
 			<RawWebflow/>
