@@ -2577,15 +2577,6 @@ textarea.w-input, textarea.w-select {
   height: 200vh;
 }
 
-@media screen and (max-width: 991px) {
-  .brand {
-    background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg");
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .brand {
     left: 10px;
@@ -2618,8 +2609,12 @@ textarea.w-input, textarea.w-select {
     top: 0;
   }
 
+  .container-6 {
+    text-align: center;
+  }
+
   .container-7 {
-    order: -1;
+    order: 2;
     justify-content: center;
     align-items: center;
     min-height: 200vh;
@@ -2631,7 +2626,7 @@ textarea.w-input, textarea.w-select {
   }
 
   .container-9 {
-    order: 3;
+    order: -1;
     min-height: 200vh;
   }
 
