@@ -7,8 +7,8 @@ export default function LandPage() {
 			<RawWebflow/>
 
 			{/* GSAP stuff */}
-			<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-			<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+			<Script src="/gsap.min.js" id="gsapScript"/>
+			<Script src="/ScrollTrigger.min.js" id="scrollTriggerScript"/>
 
 			<Script src="/land_page.js" strategy="afterInteractive" />
 		</main></>

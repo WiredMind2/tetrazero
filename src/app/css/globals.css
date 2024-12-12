@@ -2281,7 +2281,15 @@ textarea.w-input, textarea.w-select {
   height: auto;
 }
 
-.nav-link, .nav-link-2, .nav-link-3, .nav-link-4 {
+.nav-link {
+  color: #ddd;
+}
+
+.nav-link.fake-link {
+  text-align: left;
+}
+
+.nav-link-2, .nav-link-3, .nav-link-4 {
   color: #ddd;
 }
 
@@ -2582,6 +2590,10 @@ textarea.w-input, textarea.w-select {
     left: 10px;
   }
 
+  .nav-menu {
+    background-color: #0000;
+  }
+
   .container-4 {
     flex-flow: column;
     justify-content: flex-start;
@@ -2611,6 +2623,10 @@ textarea.w-input, textarea.w-select {
 
   .container-6 {
     text-align: center;
+  }
+
+  .nav-link {
+    background-color: #0000;
   }
 
   .container-7 {
@@ -2643,6 +2659,14 @@ textarea.w-input, textarea.w-select {
     margin-top: 0;
     margin-bottom: 0;
     top: 0;
+  }
+
+  .div-block-13 {
+    display: block;
+  }
+
+  .menu-button.w--open {
+    background-color: #0000;
   }
 }
 
