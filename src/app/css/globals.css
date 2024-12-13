@@ -2605,7 +2605,7 @@ textarea.w-input, textarea.w-select {
   height: 200vh;
 }
 
-.particles-js {
+.tsparticles {
   z-index: 5;
   height: 100vh;
   display: block;

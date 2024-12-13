@@ -10,7 +10,6 @@ export default function LandPage() {
 			<RawWebflow />
 
 			<GSAP />
-			<ParticleJS />
 		</main></>
 	);
 }

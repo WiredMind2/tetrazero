@@ -1,9 +1,17 @@
 'use client';
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
 
-function sleep(ms) {
+declare global {
+  interface Window {
+	fakeLinkAnim?: gsap.core.Tween;
+  }
+}
+import { useEffect, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+function sleep(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -113,25 +121,30 @@ export default function GSAP() {
 			// Carousel
 
 			let cont = document.querySelector(".carousel");
-			if (cont) {
-				function correctHeight(event = null) {
-					let target = cont.parentElement.parentElement.parentElement.parentElement;
-
-					target.style.height = cont.clientWidth - cont.parentElement.clientWidth + cont.parentElement.parentElement.clientHeight + "px";
+			function correctHeight(event?: Event) {
+				if (!cont) {
+					return;
 				}
+				let target = cont?.parentElement?.parentElement?.parentElement?.parentElement;
+				let val = cont.clientWidth - (cont.parentElement?.clientWidth || 0) + (cont.parentElement?.parentElement?.clientHeight || 0) + "px"
+				if (!target) return;
 
+				target.style.height = val;
+			}
+
+			if (cont) {
 
 				window.addEventListener('resize', correctHeight, true);
 				correctHeight();
 
 				gsap.to(".carousel_slide", {
 					ease: "none",
-					x: () => -(cont.scrollWidth - cont.parentElement.clientWidth),
+					x: () => cont.parentElement ? -(cont.scrollWidth - cont.parentElement.clientWidth) : 0,
 					scrollTrigger: {
 						trigger: cont,
 						// pin: cont.parentElement.parentElement,
 						start: "center center",
-						end: () => "+=" + (cont.scrollWidth - cont.parentElement.clientWidth),
+						end: () => cont.parentElement ? "+=" + (cont.scrollWidth - cont.parentElement.clientWidth) : "+=0",
 						scrub: true,
 						invalidateOnRefresh: true,
 						snap: {
@@ -168,7 +181,10 @@ export default function GSAP() {
 					var fakeLinkTexts = ["THE CAKE IS A LIE", "I'M NOT A LINK", "CLICK ME!", "42!", "BOO!", "HI!"];
 					let text = fakeLinkTexts[Math.floor(Math.random() * fakeLinkTexts.length)];
 					console.log(text);
-					document.querySelector(".fake-link-text").textContent = text;
+					const fakeLinkTextElement = document.querySelector(".fake-link-text");
+					if (fakeLinkTextElement) {
+						fakeLinkTextElement.textContent = text;
+					}
 
 					fakeLinkAnim.seek(0);
 					fakeLinkAnim.play();
@@ -178,9 +194,10 @@ export default function GSAP() {
 			// Mobile nav menu
 			document.querySelector(".menu-button")?.addEventListener("click", (event) => {
 				var node = document.querySelector(".nav-menu");
-				var newParent = document.querySelector(".w-nav-overlay");
+				if(!node) return;
+				var newParent = (document.querySelector(".w-nav-overlay") as HTMLElement);
 				if (newParent == null) {
-					newParent = document.createElement("div");
+					newParent = (document.createElement("div") as HTMLElement);
 					// newParent.style = "transition: all, transform 400ms; transform: translateY(0px) translateX(0px)";
 					newParent.className = "w-nav-overlay";
 					newParent.setAttribute("data-wf-ignore", "");
@@ -212,8 +229,8 @@ export default function GSAP() {
 	return (
 		<>
 			{/* GSAP stuff */}
-			<Script src="/gsap.min.js" id="gsapScript" />
-			<Script src="/ScrollTrigger.min.js" id="scrollTriggerScript" />
+			{/* <Script src="/gsap.min.js" id="gsapScript" />
+			<Script src="/ScrollTrigger.min.js" id="scrollTriggerScript" /> */}
 
 		</>
 	);
