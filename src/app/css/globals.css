@@ -2726,8 +2726,12 @@ textarea.w-input, textarea.w-select {
     height: 20vh;
   }
 
+  .carousel_slide {
+    text-shadow: none;
+  }
+
   .section-9 {
-    height: 400vh;
+    height: 200vh;
   }
 
   .div-block-16 {
