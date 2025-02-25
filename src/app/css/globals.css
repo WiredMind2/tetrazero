@@ -2710,6 +2710,10 @@ textarea.w-input, textarea.w-select {
 }
 
 @media screen and (max-width: 479px) {
+  .section-3 {
+    display: none;
+  }
+
   .quick-stack-2 {
     order: 0;
   }
@@ -2720,6 +2724,10 @@ textarea.w-input, textarea.w-select {
 
   .div-block-3, .div-block-4, .div-block-5 {
     height: 20vh;
+  }
+
+  .section-9 {
+    height: 400vh;
   }
 
   .div-block-16 {

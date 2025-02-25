@@ -48,7 +48,8 @@ export default function GSAP() {
 				},
 				y: 100,
 				opacity: 0,
-				duration: 1
+				duration: 1,
+				markers: true
 			});
 
 			gsap.to(".heading-come", {
