@@ -2718,6 +2718,10 @@ textarea.w-input, textarea.w-select {
     order: 0;
   }
 
+  .title-container {
+    overflow: hidden;
+  }
+
   .container-7, .container-8, .container-9 {
     min-height: 20vh;
   }
