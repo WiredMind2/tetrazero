@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import "./css/globals.css";
-import "./css/tweaks.css";
-import "./css/fonts.css";
+import "./css/portfolio.css";
+import { ThemeProvider } from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
-  title: "Tetrazero",
-  description: "A personal blog",
+  title: "William Michaud | Computer Science Student & Competitive Programmer",
+  description: "Portfolio of William Michaud - INSA Lyon Computer Science student, 4-time Prologin finalist, and winner of the 2020 Match'Up Coding Battle. Specializing in algorithms, competitive programming, and full-stack development.",
+  keywords: ["William Michaud", "Computer Science", "Competitive Programming", "Prologin", "INSA Lyon", "Algorithms", "Python", "C++", "Web Development"],
+  authors: [{ name: "William Michaud" }],
+  openGraph: {
+    title: "William Michaud | Computer Science Student & Competitive Programmer",
+    description: "Portfolio showcasing competitive programming achievements, academic projects, and technical skills",
+    type: "website",
+    url: "https://tetrazero.com",
+  },
 };
 
 export default function RootLayout({
@@ -15,7 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.webp" />
+      </head>
+      <body>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

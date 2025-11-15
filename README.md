@@ -1,22 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TetraZero - Professional Portfolio Website
 
-## Getting Started
+A modern, animated portfolio website built with Next.js 14, React 18, TypeScript, GSAP, and Tailwind CSS. Features smooth scroll animations, interactive particles, dark/light mode, and a fully responsive design.
 
-First, run the development server:
+![TetraZero Portfolio](public/favicon.webp)
 
+## ✨ Features
+
+### Core Functionality
+- **Professional Portfolio Sections**: Hero, About, Skills, Projects, Experience, Contact
+- **Smooth Scroll Animations**: Powered by GSAP and ScrollTrigger
+- **Interactive Particle Background**: Dynamic tsparticles background with custom styling
+- **Dark/Light Mode Toggle**: Theme switching with localStorage persistence
+- **Responsive Design**: Mobile-first approach, fully responsive across all devices
+- **Contact Form**: Functional contact form with validation (ready for email integration)
+- **Project Filtering**: Filter projects by technology/category
+- **SEO Optimized**: Meta tags, Open Graph, and semantic HTML
+
+### Technical Features
+- **Next.js 14**: Latest features including App Router
+- **TypeScript**: Full type safety throughout the application
+- **GSAP Animations**: Professional scroll-triggered animations
+- **Component Architecture**: Modular, reusable components
+- **Modern CSS**: CSS custom properties for theming
+- **Performance Optimized**: Image optimization, lazy loading, code splitting
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 16+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
