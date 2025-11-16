@@ -36,6 +36,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 downloaded_images/
-public/projects/astronauts/
 scripts/__pycache__/
 dist/
