@@ -8,6 +8,15 @@ import os
 import requests
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_MODEL = "tngtech/deepseek-r1t2-chimera:free"  # Change this to your preferred model
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+EXCLUDE_REPOS = []  # Add repository names to exclude from the portfolio
 
 def fetch_github_repos(username):
     """Fetch public repositories from GitHub API"""
@@ -15,7 +24,7 @@ def fetch_github_repos(username):
     params = {
         'sort': 'updated',
         'direction': 'desc',
-        'per_page': 10  # Get top 10 most recent
+        'per_page': 30  # Get top 30 most recent
     }
 
     response = requests.get(url, params=params)
@@ -25,8 +34,38 @@ def fetch_github_repos(username):
         print(f"Error fetching repos: {response.status_code}")
         return []
 
+def fetch_readme(owner, repo):
+    """Fetch README content from GitHub API"""
+    url = f"https://api.github.com/repos/{owner}/{repo}/readme"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        import base64
+        content = base64.b64decode(data['content']).decode('utf-8')
+        return content
+    else:
+        print(f"Error fetching README for {owner}/{repo}: {response.status_code}")
+        return ""
+
 def generate_description(repo):
-    """Generate a description for the repo"""
+    """Generate a description for the repo using OpenRouter"""
+    readme = fetch_readme(repo['owner']['login'], repo['name'])
+    try:
+        prompt = f"Generate a very concise one-sentence description for the GitHub repository '{repo['name']}' written in {repo['language'] or 'various languages'}. Original description: {repo.get('description', 'No description provided')}. README content: {readme[:500]}. Output only the description text, without any introductory phrases or additional commentary."
+        headers = {"Authorization": f"Bearer {OPENROUTER_API_KEY}"}
+        response = requests.post(OPENROUTER_URL, json={
+            'model': OPENROUTER_MODEL,
+            'messages': [{'role': 'user', 'content': prompt}]
+        }, headers=headers, timeout=30)
+        if response.status_code == 200:
+            result = response.json()
+            desc = result['choices'][0]['message']['content'].strip()
+            if desc:
+                return desc
+    except Exception as e:
+        print(f"Error generating description with OpenRouter: {e}")
+    
+    # Fallback to original logic
     if repo.get('description'):
         return repo['description']
 
@@ -44,7 +83,24 @@ def generate_description(repo):
         return f"A {repo['language']} project: {repo['name'].replace('-', ' ')}"
 
 def generate_long_description(repo):
-    """Generate a longer description"""
+    """Generate a longer description using OpenRouter"""
+    readme = fetch_readme(repo['owner']['login'], repo['name'])
+    try:
+        prompt = f"Generate a detailed description (2-3 sentences) for a GitHub repository named '{repo['name']}' written in {repo['language'] or 'various languages'}. Original description: {repo.get('description', 'No description provided')}. README content: {readme[:2000]}. Include key features and purpose. Output only the description text, without any introductory phrases or additional commentary."
+        headers = {"Authorization": f"Bearer {OPENROUTER_API_KEY}"}
+        response = requests.post(OPENROUTER_URL, json={
+            'model': OPENROUTER_MODEL,
+            'messages': [{'role': 'user', 'content': prompt}]
+        }, headers=headers, timeout=30)
+        if response.status_code == 200:
+            result = response.json()
+            desc = result['choices'][0]['message']['content'].strip()
+            if desc:
+                return desc
+    except Exception as e:
+        print(f"Error generating long description with OpenRouter: {e}")
+    
+    # Fallback to original logic
     desc = generate_description(repo)
     if repo.get('description'):
         return repo['description']
@@ -86,11 +142,12 @@ def get_color(index):
     ]
     return colors[index % len(colors)]
 
-def update_projects_file(repos):
-    """Update the Projects.tsx file with new projects"""
+def update_projects_json(repos):
+    """Update the projects.json file with new projects"""
     projects = []
 
     for i, repo in enumerate(repos[:6]):  # Top 6 repos
+        print(f"Processing {i+1}/6: {repo['name']} - Generating descriptions...")
         project = {
             'id': i + 1,
             'title': repo['name'].replace('-', ' ').title(),
@@ -104,103 +161,11 @@ def update_projects_file(repos):
         }
         projects.append(project)
 
-    # Generate the TypeScript code
-    projects_code = "const projects: Project[] = [\n"
-    for project in projects:
-        projects_code += f"""  {{
-    id: {project['id']},
-    title: '{project['title']}',
-    description: '{project['description']}',
-    longDescription: '{project['longDescription']}',
-    techStack: {project['techStack']},
-    image: '{project['image']}',
-    githubUrl: '{project['githubUrl']}',
-    featured: {str(project['featured']).lower()},
-    category: '{project['category']}'
-  }},\n"""
-    projects_code += "];\n"
+    # Write to projects.json
+    with open('src/projects.json', 'w', encoding='utf-8') as f:
+        json.dump(projects, f, indent=2)
 
-    # Read the current file
-    with open('src/app/components/Projects.tsx', 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # Replace the projects array
-    start_marker = "const projects: Project[] = ["
-    end_marker = "];"
-
-    start_idx = content.find(start_marker)
-    if start_idx == -1:
-        print("Could not find projects array in Projects.tsx")
-        return
-
-    # Find the end of the array
-    bracket_count = 0
-    end_idx = start_idx
-    for i in range(start_idx, len(content)):
-        if content[i] == '[':
-            bracket_count += 1
-        elif content[i] == ']':
-            bracket_count -= 1
-            if bracket_count == 0:
-                end_idx = i + 1
-                break
-
-    new_content = content[:start_idx] + projects_code + content[end_idx:]
-
-    with open('src/app/components/Projects.tsx', 'w', encoding='utf-8') as f:
-        f.write(new_content)
-
-    print("Updated Projects.tsx")
-
-def update_image_script(repos):
-    """Update the image generation script"""
-    projects_data = []
-
-    for i, repo in enumerate(repos[:6]):
-        filename = f"{repo['name'].lower().replace('-', '')}.jpg"
-        title = repo['name'].replace('-', ' ').title()
-        tech = [repo['language']] if repo['language'] else ['Various']
-        color = get_color(i)
-
-        projects_data.append({
-            'filename': filename,
-            'title': title,
-            'tech': tech,
-            'color': color
-        })
-
-    # Generate the Python code
-    projects_code = "# Project data matching the Projects.tsx component\nprojects = [\n"
-    for project in projects_data:
-        projects_code += f"""    {{
-        'filename': '{project['filename']}',
-        'title': '{project['title']}',
-        'tech': {project['tech']},
-        'color': {project['color']}
-    }},\n"""
-    projects_code += "]\n"
-
-    # Read the current script
-    with open('scripts/generate_project_images.py', 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # Replace the projects list
-    start_marker = "# Project data matching the Projects.tsx component\nprojects = ["
-    end_marker = "]\n"
-
-    start_idx = content.find(start_marker)
-    if start_idx == -1:
-        print("Could not find projects list in generate_project_images.py")
-        return
-
-    end_idx = content.find(end_marker, start_idx) + len(end_marker)
-
-    new_content = content[:start_idx] + projects_code + content[end_idx:]
-
-    with open('scripts/generate_project_images.py', 'w', encoding='utf-8') as f:
-        f.write(new_content)
-
-    print("Updated generate_project_images.py")
+    print("Updated projects.json")
 
 def main():
     username = "WiredMind2"
@@ -217,11 +182,11 @@ def main():
     public_repos = [r for r in repos if not r.get('private', False)]
     print(f"Using {len(public_repos)} public repositories")
 
-    update_projects_file(public_repos)
-    update_image_script(public_repos)
+    # Exclude specified repos
+    public_repos = [r for r in public_repos if r['name'] not in EXCLUDE_REPOS]
+    print(f"After excluding: {len(public_repos)} repositories")
 
-    print("Running image generation...")
-    os.system("python scripts/generate_project_images.py")
+    update_projects_json(public_repos)
 
     print("Portfolio update complete!")
 

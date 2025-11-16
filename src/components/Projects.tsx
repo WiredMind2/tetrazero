@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import gsap from 'gsap';
+import projectsData from '../projects.json';
+import { getRandomAstronautImage } from '../utils/imageUtils';
 
 interface Project {
   id: number;
@@ -17,100 +18,38 @@ interface Project {
   category: 'web' | 'mobile' | 'fullstack' | 'other';
 }
 
-const astronautImageCount = 6;
-
-const getRandomAstronautImage = () => {
-  const randomIndex = Math.floor(Math.random() * astronautImageCount) + 1;
-  return `/projects/astronauts/${randomIndex}.webp`;
-};
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Awale Game',
-    description: 'Implementation of the traditional African board game Awale in C',
-    longDescription: 'A complete implementation of the Awale game, featuring strategic gameplay and AI opponents. Developed in C for optimal performance.',
-    techStack: ['C'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/Awale-Game',
-    featured: true,
-    category: 'other'
-  },
-  {
-    id: 2,
-    title: 'OpenRouter Client',
-    description: 'Python client for interacting with OpenRouter API',
-    longDescription: 'A Python library to easily integrate with OpenRouter services, providing a simple interface for API calls and data handling.',
-    techStack: ['Python'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/OpenRouterClient',
-    featured: true,
-    category: 'other'
-  },
-  {
-    id: 3,
-    title: 'PLD AGILE Project',
-    description: 'Repository for the PLD AGILE course project',
-    longDescription: 'A project developed as part of the PLD AGILE course, demonstrating agile development practices and software engineering principles.',
-    techStack: ['Python'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/PLD-AGILE',
-    featured: true,
-    category: 'other'
-  },
-  {
-    id: 4,
-    title: 'Gym Tracker',
-    description: 'Web application for tracking gym workouts and progress',
-    longDescription: 'A JavaScript-based web app that helps users log their gym sessions, track exercises, and monitor fitness progress over time.',
-    techStack: ['JavaScript'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/GymTracker',
-    featured: false,
-    category: 'web'
-  },
-  {
-    id: 5,
-    title: 'Anime Manager',
-    description: 'Tool for managing anime collections and watchlists',
-    longDescription: 'A Python application for organizing and tracking anime series, including watch status, ratings, and recommendations.',
-    techStack: ['Python'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/AnimeManager',
-    featured: false,
-    category: 'other'
-  },
-  {
-    id: 6,
-    title: 'Manga Reader',
-    description: 'Application for reading and managing manga collections',
-    longDescription: 'A Python-based manga reader with features for downloading, organizing, and reading manga chapters with a user-friendly interface.',
-    techStack: ['Python'],
-    image: getRandomAstronautImage(),
-    githubUrl: 'https://github.com/WiredMind2/Manga-Reader',
-    featured: false,
-    category: 'other'
-  }
-];
+// Add images to projects data
+const projects: Project[] = (projectsData as Omit<Project, 'image'>[]).map((project) => ({
+  ...project,
+  image: getRandomAstronautImage()
+}));
 
 export default function Projects() {
-  const [filter, setFilter] = useState<'all' | 'web' | 'mobile' | 'fullstack' | 'other'>('all');
+  const [filter, setFilter] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // Get unique technologies from projects data
+  const availableTechnologies = Array.from(new Set(projects.flatMap(p => p.techStack))).sort();
 
   const filteredProjects = filter === 'all'
     ? projects
-    : projects.filter(p => p.category === filter);
+    : projects.filter(p => p.techStack.includes(filter));
 
   const featuredProjects = projects.filter(p => p.featured);
 
   useEffect(() => {
-    gsap.from('.project-card', {
-      opacity: 0,
-      y: 30,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
+    // Simple animation without ScrollTrigger to ensure it always runs
+    gsap.fromTo('.project-card', 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        stagger: 0.15, 
+        duration: 0.6, 
+        ease: 'power2.out',
+        delay: 0.2 // Small delay to ensure DOM is ready
+      }
+    );
   }, []);
 
   return (
@@ -127,11 +66,9 @@ export default function Projects() {
           {featuredProjects.map((project, index) => (
             <div key={project.id} className={`featured-project featured-project-${index % 2 === 0 ? 'left' : 'right'}`}>
               <div className="featured-project-image">
-                <Image 
+                <img 
                   src={project.image} 
                   alt={project.title}
-                  width={600}
-                  height={400}
                   className="project-img"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -182,24 +119,15 @@ export default function Projects() {
             >
               All
             </button>
-            <button 
-              className={`filter-btn ${filter === 'web' ? 'active' : ''}`}
-              onClick={() => setFilter('web')}
-            >
-              Web
-            </button>
-            <button 
-              className={`filter-btn ${filter === 'fullstack' ? 'active' : ''}`}
-              onClick={() => setFilter('fullstack')}
-            >
-              Full Stack
-            </button>
-            <button 
-              className={`filter-btn ${filter === 'mobile' ? 'active' : ''}`}
-              onClick={() => setFilter('mobile')}
-            >
-              Mobile
-            </button>
+            {availableTechnologies.map((technology) => (
+              <button
+                key={technology}
+                className={`filter-btn ${filter === technology ? 'active' : ''}`}
+                onClick={() => setFilter(technology)}
+              >
+                {technology}
+              </button>
+            ))}
           </div>
 
           <div className="projects-grid">
@@ -207,11 +135,9 @@ export default function Projects() {
               return (
                 <div key={project.id} className="project-card">
                   <div className="project-card-image">
-                    <Image
+                    <img
                       src={project.image}
                       alt={project.title}
-                      width={400}
-                      height={250}
                       className="project-card-img"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -258,11 +184,9 @@ export default function Projects() {
               ×
             </button>
             <div className="project-modal-image">
-              <Image 
+              <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title}
-                width={800}
-                height={500}
                 className="modal-img"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;

@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "Awale Game",
+    "description": "A modular C implementation of the Awale (Oware) game featuring client/server separation to isolate game logic from networking.",
+    "longDescription": "Awale-Game is a modular C implementation of the traditional Awale (Oware/Mancala) game, featuring a client/server architecture that cleanly separates game logic from TCP/UDP networking layers and text-based UI components for unit-testable, maintainable code. It supports automatic server discovery via UDP broadcast, single-socket TCP communication for gameplay, thread-safe concurrency, and cross-platform compatibility (Linux/macOS/Windows). The implementation includes bilingual English/French UI support, comprehensive testing, and configurable ports for simplified local network play.",
+    "techStack": [
+      "C"
+    ],
+    "image": "/projects/awalegame.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Awale-Game",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 2,
+    "title": "Openrouterclient",
+    "description": "A minimal Python CLI client for interacting with OpenRouter's OpenAI-compatible chat completions API.",
+    "longDescription": "OpenRouterClient is a lightweight Python CLI tool designed for seamless interaction with OpenRouter's OpenAI-compatible chat completions API, supporting API key configuration through environment files (.env) or direct command-line arguments. It offers flexibility with customizable headers for OpenRouter rankings (referer and site title) and endpoint overrides for proxies or custom servers. Built for minimalism and simplicity, this synchronous client prioritizes ease of use while encouraging users to implement production-grade features like retries and streaming as needed.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/openrouterclient.jpg",
+    "githubUrl": "https://github.com/WiredMind2/OpenRouterClient",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 3,
+    "title": "Pld Agile",
+    "description": "A modular and scalable FastAPI backend written in Python for the PLD AGILE project.",
+    "longDescription": "PLD-AGILE is a collaborative project developed by William Michaud, Elise Bachet, Louis Labory, Lou Reina-Kuntziger, Jason Laval, and Andy Gonzales, featuring a modular FastAPI backend for scalable API development and a modern frontend built with Node.js. The backend emphasizes extensibility with interactive documentation (Swagger/Redoc), while the frontend provides an intuitive user interface, both following clear installation workflows. This repository includes comprehensive deliverables and user manuals to streamline setup and usage for developers.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/pldagile.jpg",
+    "githubUrl": "https://github.com/WiredMind2/PLD-AGILE",
+    "featured": true,
+    "category": "fullstack"
+  },
+  {
+    "id": 4,
+    "title": "Gymtracker",
+    "description": "A React-based workout tracking application with progress visualization, workout templates, and exercise management built using Tailwind CSS and Chart.js.",
+    "longDescription": "GymTracker is a modern React and Tailwind CSS application designed to streamline workout management and fitness progress tracking. It offers comprehensive workout logging with set/reps tracking, customizable templates, and an exercise library with 45+ preloaded options, enhanced by Chart.js analytics for performance visualization. The PWA-ready app features dark mode, mobile responsiveness, and data import/export functionality for seamless cross-device usage.",
+    "techStack": [
+      "JavaScript"
+    ],
+    "image": "/projects/gymtracker.jpg",
+    "githubUrl": "https://github.com/WiredMind2/GymTracker",
+    "featured": false,
+    "category": "web"
+  },
+  {
+    "id": 5,
+    "title": "Animemanager",
+    "description": "A Python application automating anime management by searching databases and torrents, downloading through Qbittorent, organizing files, and providing built-in media players for viewing.",
+    "longDescription": "AnimeManager is a comprehensive Python application designed to streamline the process of discovering, downloading, and watching anime by integrating multiple database websites and torrent search capabilities. It automates torrent downloads via Qbittorrent, organizes files into subfolders, and provides built-in media players for seamless playback. This tool simplifies the entire workflow\u2014from searching thousands of titles to watching episodes\u2014in a single interface, ideal for users seeking a free, efficient, and self-contained anime viewing solution.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/animemanager.jpg",
+    "githubUrl": "https://github.com/WiredMind2/AnimeManager",
+    "featured": true,
+    "category": "fullstack"
+  },
+  {
+    "id": 6,
+    "title": "Manga Reader",
+    "description": "\"A FastAPI and SvelteKit-based manga reader web app with multi-format support, user authentication, responsive design, adjustable reading modes, and progress tracking.\"",
+    "longDescription": "The Manga Reader is a full-stack web application built with Python (FastAPI) and SvelteKit, offering a modern interface for browsing and reading manga/manhwa in multiple formats including folders, ZIP, RAR, CBZ, and CBR. It supports responsive reading modes (right-to-left and top-to-bottom), secure user authentication with progress tracking, and server-side image optimization while preserving original files. Key features include metadata management, chapter/page bookmarks, and a customizable UI powered by ShadCN components and TailwindCSS.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/mangareader.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Manga-Reader",
+    "featured": true,
+    "category": "fullstack"
+  }
+]

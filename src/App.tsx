@@ -9,11 +9,11 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AnimationController from "./components/AnimationController";
 import ParticleJS from "./particleJS";
-import { ThemeToggle } from "./components/ThemeToggle";
+import { ThemeProvider } from "./components/ThemeToggle";
 
-export default function LandPage() {
+function App() {
 	return (
-		<>
+		<ThemeProvider>
 			<Navbar />
 			<main className="main-content">
 				<ParticleJS />
@@ -26,7 +26,8 @@ export default function LandPage() {
 			</main>
 			<Footer />
 			<AnimationController />
-			<ThemeToggle />
-		</>
+		</ThemeProvider>
 	);
 }
+
+export default App;

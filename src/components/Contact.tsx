@@ -129,7 +129,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <a href="mailto:william@michaud.re">william@michaud.re</a>
+                  <a href="mailto:contact@tetrazero.com">contact@tetrazero.com</a>
                 </div>
               </div>
 

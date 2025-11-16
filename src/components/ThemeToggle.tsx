@@ -69,45 +69,6 @@ export function ThemeToggle() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
       )}
-
-      <style jsx>{`
-        .theme-toggle {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: var(--accent-gradient);
-          border: none;
-          color: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: var(--shadow-lg), var(--shadow-glow);
-          transition: all 0.3s ease;
-          z-index: 99;
-        }
-
-        .theme-toggle:hover {
-          transform: translateY(-3px) rotate(15deg);
-          box-shadow: var(--shadow-lg), 0 0 40px rgba(99, 102, 241, 0.5);
-        }
-
-        .theme-toggle:active {
-          transform: translateY(-1px) rotate(15deg);
-        }
-
-        @media (max-width: 768px) {
-          .theme-toggle {
-            width: 48px;
-            height: 48px;
-            bottom: 20px;
-            right: 20px;
-          }
-        }
-      `}</style>
     </button>
   );
 }
