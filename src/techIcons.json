@@ -7,10 +7,6 @@
     "name": "C3",
     "category": "language"
   },
-  "class-svgrepo-com.svg": {
-    "name": "Java",
-    "category": "language"
-  },
   "conda-svgrepo-com.svg": {
     "name": "Conda",
     "category": "tool"
@@ -111,10 +107,6 @@
     "name": "QML",
     "category": "language"
   },
-  "react-svgrepo-com.svg": {
-    "name": "React",
-    "category": "framework"
-  },
   "reactjs-svgrepo-com.svg": {
     "name": "React",
     "category": "framework"
@@ -128,7 +120,7 @@
     "category": "library"
   },
   "sln-svgrepo-com.svg": {
-    "name": "Visual Studio",
+    "name": "VisualStudio",
     "category": "tool"
   },
   "db-svgrepo-com.svg": {
@@ -164,10 +156,6 @@
     "category": "editor"
   },
   "vscode-svgrepo-com.svg": {
-    "name": "VS Code",
-    "category": "editor"
-  },
-  "vscode2-svgrepo-com.svg": {
     "name": "VS Code",
     "category": "editor"
   }
