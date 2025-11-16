@@ -65,9 +65,6 @@ export default function Navbar() {
             <a href="#contact" className="navbar-link" onClick={() => setIsMobileMenuOpen(false)}>
               Contact
             </a>
-            <a href="https://manga.tetrazero.com" className="navbar-link" target="_blank" rel="noopener noreferrer">
-              Manga
-            </a>
           </div>
         </div>
       </nav>

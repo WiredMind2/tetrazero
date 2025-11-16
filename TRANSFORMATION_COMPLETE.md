@@ -124,7 +124,7 @@ Text: #1a1a1a → #718096
 ### Immediate Actions
 1. **Update Personal Info**
    - Name, title, description in Hero
-   - Social media links (GitHub, LinkedIn, Twitter)
+   - Social media links (GitHub, LinkedIn)
    - Email in Contact section
 
 2. **Add Content**

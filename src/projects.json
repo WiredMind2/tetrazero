@@ -1,48 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Awale Game",
-    "description": "A modular C implementation of the Awale (Oware) game featuring client/server separation to isolate game logic from networking.",
-    "longDescription": "Awale-Game is a modular C implementation of the traditional Awale (Oware/Mancala) game, featuring a client/server architecture that cleanly separates game logic from TCP/UDP networking layers and text-based UI components for unit-testable, maintainable code. It supports automatic server discovery via UDP broadcast, single-socket TCP communication for gameplay, thread-safe concurrency, and cross-platform compatibility (Linux/macOS/Windows). The implementation includes bilingual English/French UI support, comprehensive testing, and configurable ports for simplified local network play.",
-    "techStack": [
-      "C"
-    ],
-    "image": "/projects/awalegame.jpg",
-    "githubUrl": "https://github.com/WiredMind2/Awale-Game",
-    "featured": false,
-    "category": "other"
-  },
-  {
-    "id": 2,
-    "title": "Openrouterclient",
-    "description": "A minimal Python CLI client for interacting with OpenRouter's OpenAI-compatible chat completions API.",
-    "longDescription": "OpenRouterClient is a lightweight Python CLI tool designed for seamless interaction with OpenRouter's OpenAI-compatible chat completions API, supporting API key configuration through environment files (.env) or direct command-line arguments. It offers flexibility with customizable headers for OpenRouter rankings (referer and site title) and endpoint overrides for proxies or custom servers. Built for minimalism and simplicity, this synchronous client prioritizes ease of use while encouraging users to implement production-grade features like retries and streaming as needed.",
-    "techStack": [
-      "Python"
-    ],
-    "image": "/projects/openrouterclient.jpg",
-    "githubUrl": "https://github.com/WiredMind2/OpenRouterClient",
-    "featured": false,
-    "category": "fullstack"
-  },
-  {
-    "id": 3,
-    "title": "Pld Agile",
-    "description": "A modular and scalable FastAPI backend written in Python for the PLD AGILE project.",
-    "longDescription": "PLD-AGILE is a collaborative project developed by William Michaud, Elise Bachet, Louis Labory, Lou Reina-Kuntziger, Jason Laval, and Andy Gonzales, featuring a modular FastAPI backend for scalable API development and a modern frontend built with Node.js. The backend emphasizes extensibility with interactive documentation (Swagger/Redoc), while the frontend provides an intuitive user interface, both following clear installation workflows. This repository includes comprehensive deliverables and user manuals to streamline setup and usage for developers.",
-    "techStack": [
-      "Python"
-    ],
-    "image": "/projects/pldagile.jpg",
-    "githubUrl": "https://github.com/WiredMind2/PLD-AGILE",
-    "featured": true,
-    "category": "fullstack"
-  },
-  {
-    "id": 4,
     "title": "Gymtracker",
-    "description": "A React-based workout tracking application with progress visualization, workout templates, and exercise management built using Tailwind CSS and Chart.js.",
-    "longDescription": "GymTracker is a modern React and Tailwind CSS application designed to streamline workout management and fitness progress tracking. It offers comprehensive workout logging with set/reps tracking, customizable templates, and an exercise library with 45+ preloaded options, enhanced by Chart.js analytics for performance visualization. The PWA-ready app features dark mode, mobile responsiveness, and data import/export functionality for seamless cross-device usage.",
+    "description": "\"A React and Tailwind CSS workout tracking app providing progress charts, template management, and exercise library features.\"",
+    "longDescription": "GymTracker is a React-based workout tracking application featuring real-time progress visualization with Chart.js, workout logging, and template management. The app includes a pre-loaded exercise library with custom exercise creation, progress analytics, dark mode, and PWA functionality\u2014all styled with responsive Tailwind CSS. Designed with a GitHub Actions deployment pipeline, it offers export/import capabilities and full mobile optimization for seamless fitness tracking.",
     "techStack": [
       "JavaScript"
     ],
@@ -52,10 +13,10 @@
     "category": "web"
   },
   {
-    "id": 5,
+    "id": 2,
     "title": "Animemanager",
-    "description": "A Python application automating anime management by searching databases and torrents, downloading through Qbittorent, organizing files, and providing built-in media players for viewing.",
-    "longDescription": "AnimeManager is a comprehensive Python application designed to streamline the process of discovering, downloading, and watching anime by integrating multiple database websites and torrent search capabilities. It automates torrent downloads via Qbittorrent, organizes files into subfolders, and provides built-in media players for seamless playback. This tool simplifies the entire workflow\u2014from searching thousands of titles to watching episodes\u2014in a single interface, ideal for users seeking a free, efficient, and self-contained anime viewing solution.",
+    "description": "A Python application to search, manage, automatically download, and watch anime episodes with torrent integration, database aggregation, and media playback.",
+    "longDescription": "AnimeManager is a comprehensive Python application designed to streamline the anime-watching process by integrating multiple anime database searches, torrent retrieval, and media playback into a single tool. It enables users to search across thousands of animes, download torrents directly via Qbittorrent with automated file organization, and watch content seamlessly using built-in media players. The app simplifies the end-to-end experience\u2014from discovery to viewing\u2014while offering customizable options for torrent clients and adaptable folder management.",
     "techStack": [
       "Python"
     ],
@@ -65,16 +26,55 @@
     "category": "fullstack"
   },
   {
-    "id": 6,
+    "id": 3,
     "title": "Manga Reader",
-    "description": "\"A FastAPI and SvelteKit-based manga reader web app with multi-format support, user authentication, responsive design, adjustable reading modes, and progress tracking.\"",
-    "longDescription": "The Manga Reader is a full-stack web application built with Python (FastAPI) and SvelteKit, offering a modern interface for browsing and reading manga/manhwa in multiple formats including folders, ZIP, RAR, CBZ, and CBR. It supports responsive reading modes (right-to-left and top-to-bottom), secure user authentication with progress tracking, and server-side image optimization while preserving original files. Key features include metadata management, chapter/page bookmarks, and a customizable UI powered by ShadCN components and TailwindCSS.",
+    "description": "\"Manga-Reader is a Python-built FastAPI/SvelteKit web app for reading manga/manhwa from archives or folders with user accounts, progress tracking, and responsive RTL/TTB reading modes.\"",
+    "longDescription": "A modern manga reader web application built with Python (FastAPI) and SvelteKit, offering comprehensive multi-format support for archives (CBZ, CBR, ZIP, RAR) and folder-based manga libraries. It features secure user authentication, progress tracking across devices, responsive reading modes (RTL manga and top-to-bottom manhwa), and server-side image optimization while preserving original files. The application provides a clean, customizable interface using ShadCN components and TailwindCSS, with optional metadata management for organized browsing.",
     "techStack": [
       "Python"
     ],
     "image": "/projects/mangareader.jpg",
     "githubUrl": "https://github.com/WiredMind2/Manga-Reader",
     "featured": true,
+    "category": "fullstack"
+  },
+  {
+    "id": 4,
+    "title": "Tts",
+    "description": "A Python library for text-to-speech synthesis with support for multiple models and voice cloning.",
+    "longDescription": "TTS is a Python-based text-to-speech synthesis library designed to convert written text into natural-sounding speech. It supports multiple voices, customizable speech parameters (such as pitch and speed), and various output formats (WAV, MP3) for integration into applications. The library offers a simple API for developers and includes pre-trained models for efficient deployment across different platforms.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/tts.jpg",
+    "githubUrl": "https://github.com/WiredMind2/TTS",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 5,
+    "title": "Image",
+    "description": "A Python library for image processing utilities.",
+    "longDescription": "A Python-based toolkit for efficient image processing and manipulation, supporting common operations such as loading, saving, transforming, and applying filters to images in various formats. Key features include batch processing, format conversion (JPG, PNG, WEBP, etc.), resizing, cropping, color adjustments, and basic computer vision functions like edge detection. Designed for simplicity and extensibility, it enables developers to integrate image workflows into applications with minimal dependencies.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/image.jpg",
+    "githubUrl": "https://github.com/WiredMind2/image",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 6,
+    "title": "Manga Manager",
+    "description": "A Python tool for organizing, tracking, and managing personal manga collections digitally.",
+    "longDescription": "Manga-Manager is a Python-based tool for organizing and tracking your digital manga collection, featuring automated metadata retrieval, reading progress tracking, and file management. It supports batch processing for bulk imports, customizable shelving systems, and integration with popular manga databases to keep your library synchronized and easily searchable.",
+    "techStack": [
+      "Python"
+    ],
+    "image": "/projects/mangamanager.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Manga-Manager",
+    "featured": false,
     "category": "fullstack"
   }
 ]

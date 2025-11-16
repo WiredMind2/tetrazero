@@ -15,37 +15,32 @@ export default function About() {
         <div className="about-content">
           <div className="about-text">
             <p className="about-intro">
-              Computer Science student at INSA Lyon with a passion for algorithms, competitive programming,
-              and developing innovative applications. I&apos;ve been competing in France&apos;s largest computer science
-              competitions and have held leadership roles in student associations.
+              Third-year Computer Science student at INSA Lyon. Passionate about algorithms, competitive programming, and distributed systems. 
+              Active in algorithm competitions and student associations.
             </p>
             
             <div className="about-details">
               <div className="about-detail-item">
                 <h3>Competitive Programming</h3>
                 <p>
-                  4-time finalist in Prologin (France&apos;s largest computer science competition) and winner of
-                  the 2020 Match&apos;Up Coding Battle among 500,000+ participants. Currently responsible for
-                  designing Prologin competition exercises and representing INSA Lyon in European competitions
-                  like SWERC and ICPC European selections.
+                  I often compete in many programming contests, such as ICPC or Prologin. I'm part of multiple associations, 
+                  and I'm also helping organize coding competitions like the MatchUp's Coding Battle.
                 </p>
               </div>
               
               <div className="about-detail-item">
-                <h3>Leadership & Associations</h3>
+                <h3>Academic Background</h3>
                 <p>
-                  Active in student associations at INSA Lyon: President of INSAlgo (2025), Vice-President
-                  of AEDI (2025), and Treasurer of ADT (2023) and INSAlgo (2024). These roles have developed
-                  my project management, team coordination, and organizational skills.
+                  Currently pursuing advanced studies in computer science at INSA Lyon, with a focus on algorithms, distributed systems, and software engineering. 
+                  Working on various academic projects including image processing and system architecture.
                 </p>
               </div>
               
               <div className="about-detail-item">
-                <h3>Technical Expertise</h3>
+                <h3>Languages & Interests</h3>
                 <p>
-                  Proficient in multiple programming languages including Python, C/C++, JavaScript/React,
-                  C#, PHP, and Java. Special interests in algorithms, web development, AI/ML, big data,
-                  cybersecurity, and algorithmic trading. Always exploring new technologies and frameworks.
+                  I can fluently speak five different languages, but I'm most comfortable in French and English. Passionate about mathematics, astronomy, algorithms, 
+                  going to the gym and trail running.
                 </p>
               </div>
             </div>
@@ -53,20 +48,20 @@ export default function About() {
           
           <div className="about-stats">
             <div className="stat-card">
-              <div className="stat-number">4</div>
-              <div className="stat-label">Prologin Finalist</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">1</div>
-              <div className="stat-label">Competition Winner</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">500000</div>
-              <div className="stat-label">Participants Beaten</div>
-            </div>
-            <div className="stat-card">
               <div className="stat-number">6</div>
-              <div className="stat-label">Programming Languages</div>
+              <div className="stat-label">Competitions Participated</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">13</div>
+              <div className="stat-label">Years Python Experience</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">200+</div>
+              <div className="stat-label">Projects Completed</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">2</div>
+              <div className="stat-label">Years Association Experience</div>
             </div>
           </div>
         </div>

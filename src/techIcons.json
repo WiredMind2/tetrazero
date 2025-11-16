@@ -1,0 +1,174 @@
+{
+  "arduino-svgrepo-com.svg": {
+    "name": "Arduino",
+    "category": "hardware"
+  },
+  "c3-svgrepo-com.svg": {
+    "name": "C3",
+    "category": "language"
+  },
+  "class-svgrepo-com.svg": {
+    "name": "Java",
+    "category": "language"
+  },
+  "conda-svgrepo-com.svg": {
+    "name": "Conda",
+    "category": "tool"
+  },
+  "cpp3-svgrepo-com.svg": {
+    "name": "C++",
+    "category": "language"
+  },
+  "csharp2-svgrepo-com.svg": {
+    "name": "C#",
+    "category": "language"
+  },
+  "css-svgrepo-com.svg": {
+    "name": "CSS",
+    "category": "language"
+  },
+  "docker-svgrepo-com.svg": {
+    "name": "Docker",
+    "category": "tool"
+  },
+  "firebase-svgrepo-com.svg": {
+    "name": "Firebase",
+    "category": "service"
+  },
+  "git-svgrepo-com.svg": {
+    "name": "Git",
+    "category": "tool"
+  },
+  "gitlab-svgrepo-com.svg": {
+    "name": "GitLab",
+    "category": "tool"
+  },
+  "godot-svgrepo-com.svg": {
+    "name": "Godot",
+    "category": "engine"
+  },
+  "html-svgrepo-com.svg": {
+    "name": "HTML",
+    "category": "language"
+  },
+  "jar-svgrepo-com.svg": {
+    "name": "Java",
+    "category": "language"
+  },
+  "js-official-svgrepo-com.svg": {
+    "name": "Next.js",
+    "category": "framework"
+  },
+  "json-svgrepo-com.svg": {
+    "name": "JSON",
+    "category": "format"
+  },
+  "jupyter-svgrepo-com.svg": {
+    "name": "Jupyter",
+    "category": "tool"
+  },
+  "kotlin-svgrepo-com.svg": {
+    "name": "Kotlin",
+    "category": "language"
+  },
+  "light-rust-svgrepo-com.svg": {
+    "name": "Rust",
+    "category": "language"
+  },
+  "light-shaderlab-svgrepo-com.svg": {
+    "name": "ShaderLab",
+    "category": "language"
+  },
+  "light-tex-svgrepo-com.svg": {
+    "name": "TeX",
+    "category": "language"
+  },
+  "mysql-svgrepo-com.svg": {
+    "name": "MySQL",
+    "category": "database"
+  },
+  "node-svgrepo-com.svg": {
+    "name": "Node.js",
+    "category": "runtime"
+  },
+  "npm-svgrepo-com.svg": {
+    "name": "NPM",
+    "category": "tool"
+  },
+  "php-svgrepo-com.svg": {
+    "name": "PHP",
+    "category": "language"
+  },
+  "php2-svgrepo-com.svg": {
+    "name": "PHP",
+    "category": "language"
+  },
+  "python-svgrepo-com.svg": {
+    "name": "Python",
+    "category": "language"
+  },
+  "qml-svgrepo-com.svg": {
+    "name": "QML",
+    "category": "language"
+  },
+  "react-svgrepo-com.svg": {
+    "name": "React",
+    "category": "framework"
+  },
+  "reactjs-svgrepo-com.svg": {
+    "name": "React",
+    "category": "framework"
+  },
+  "ruby-svgrepo-com.svg": {
+    "name": "Ruby",
+    "category": "language"
+  },
+  "sequelize-svgrepo-com.svg": {
+    "name": "Sequelize",
+    "category": "library"
+  },
+  "sln-svgrepo-com.svg": {
+    "name": "Visual Studio",
+    "category": "tool"
+  },
+  "db-svgrepo-com.svg": {
+    "name": "SQLite",
+    "category": "database"
+  },
+  "svelte-svgrepo-com.svg": {
+    "name": "Svelte",
+    "category": "framework"
+  },
+  "swift-svgrepo-com.svg": {
+    "name": "Swift",
+    "category": "language"
+  },
+  "tailwind-svgrepo-com.svg": {
+    "name": "Tailwind",
+    "category": "framework"
+  },
+  "tcl-svgrepo-com.svg": {
+    "name": "TCL",
+    "category": "language"
+  },
+  "tex-svgrepo-com.svg": {
+    "name": "TeX",
+    "category": "language"
+  },
+  "typescript-icon-svgrepo-com.svg": {
+    "name": "TypeScript",
+    "category": "language"
+  },
+  "vim-svgrepo-com.svg": {
+    "name": "Vim",
+    "category": "editor"
+  },
+  "vscode-svgrepo-com.svg": {
+    "name": "VS Code",
+    "category": "editor"
+  },
+  "vscode2-svgrepo-com.svg": {
+    "name": "VS Code",
+    "category": "editor"
+  }
+}

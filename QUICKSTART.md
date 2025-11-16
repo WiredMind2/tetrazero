@@ -39,7 +39,6 @@ Files: `Hero.tsx`, `Contact.tsx`, `Footer.tsx`
 Replace all instances of:
 - `https://github.com/yourusername`
 - `https://linkedin.com/in/yourusername`
-- `https://twitter.com/yourusername`
 
 ### Step 4: Add Your Content
 

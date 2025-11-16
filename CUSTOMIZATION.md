@@ -22,7 +22,6 @@ Follow these steps to personalize your portfolio:
 // Line ~29-41: Update social media links
 <a href="https://github.com/yourusername" ...>
 <a href="https://linkedin.com/in/yourusername" ...>
-<a href="https://twitter.com/yourusername" ...>
 ```
 
 **Add Your Profile Image:**

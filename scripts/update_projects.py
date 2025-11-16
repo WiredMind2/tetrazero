@@ -15,8 +15,17 @@ load_dotenv()
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 OPENROUTER_MODEL = "tngtech/deepseek-r1t2-chimera:free"  # Change this to your preferred model
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-EXCLUDE_REPOS = []  # Add repository names to exclude from the portfolio
+# Load included repos from file
+INCLUDE_REPOS = []
+try:
+    with open('include_repos.json', 'r') as f:
+        INCLUDE_REPOS = json.load(f)
+except FileNotFoundError:
+    print("include_repos.json not found, no repos will be included")
+except json.JSONDecodeError:
+    print("Error parsing include_repos.json, no repos will be included")
 
 def fetch_github_repos(username):
     """Fetch public repositories from GitHub API"""
@@ -26,8 +35,9 @@ def fetch_github_repos(username):
         'direction': 'desc',
         'per_page': 30  # Get top 30 most recent
     }
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
 
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params, headers=headers)
     if response.status_code == 200:
         return response.json()
     else:
@@ -37,7 +47,8 @@ def fetch_github_repos(username):
 def fetch_readme(owner, repo):
     """Fetch README content from GitHub API"""
     url = f"https://api.github.com/repos/{owner}/{repo}/readme"
-    response = requests.get(url)
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
+    response = requests.get(url, headers=headers)
     if response.status_code == 200:
         data = response.json()
         import base64
@@ -182,9 +193,9 @@ def main():
     public_repos = [r for r in repos if not r.get('private', False)]
     print(f"Using {len(public_repos)} public repositories")
 
-    # Exclude specified repos
-    public_repos = [r for r in public_repos if r['name'] not in EXCLUDE_REPOS]
-    print(f"After excluding: {len(public_repos)} repositories")
+    # Filter to only include specified repos
+    public_repos = [r for r in public_repos if r['name'] in INCLUDE_REPOS]
+    print(f"After filtering to included repos: {len(public_repos)} repositories")
 
     update_projects_json(public_repos)
 

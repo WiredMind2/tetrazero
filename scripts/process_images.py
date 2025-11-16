@@ -4,7 +4,7 @@ import math
 
 # Paths
 downloaded_images_dir = 'downloaded_images'
-output_dir = 'public/projects/astronauts'
+output_dir = 'public/astronauts'
 
 # Ensure output directory exists
 os.makedirs(output_dir, exist_ok=True)

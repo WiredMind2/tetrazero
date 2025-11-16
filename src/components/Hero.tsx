@@ -14,12 +14,11 @@ export default function Hero() {
               <span className="hero-name gradient-text">William Michaud</span>
             </h1>
             <h2 className="hero-subtitle">
-              Computer Science Student & Competitive Programmer
+              Third-Year CS Student | Competitive Programmer
             </h2>
             <p className="hero-description">
-              Computer Science student at INSA Lyon, passionate about programming and algorithms.
-              4-time finalist in France&apos;s largest computer science competition (Prologin), and winner
-              of the 2020 Match&apos;Up Coding Battle among 500,000+ participants.
+              Third-year Computer Science student at INSA Lyon, passionate about algorithms, competitive programming, and distributed systems. 
+              Competed in multiple competitions and part of various associations.
             </p>
             <div className="hero-cta">
               <a href="#projects" className="btn btn-primary">
