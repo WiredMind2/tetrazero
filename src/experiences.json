@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Competition Achievements",
+    "period": "2020 - 2025",
+    "description": "Demonstrated exceptional problem-solving and algorithmic proficiency through participation in international and national computer science competitions.",
+    "achievements": [
+      "4 times finalist in Prologin (2022, 2023, 2024, 2025)",
+      "5th place in Prologin 2023 out of approximately 2,000 participants",
+      "Now responsible for designing contest exercises",
+      "1st place in Match'Up Coding Battle (formerly Le Shaker) 2020 among more than 500,000 participants",
+      "Participant in Castor Informatique (France-IOI contest)",
+      "Part of the INSA team representing at European level for SWERC/ICPC (2024, 2025)",
+      "Honed advanced algorithmic thinking, code optimization, and programming efficiency under time constraints",
+      "Represented INSA Lyon at the national level and built professional networking connections in the competitive programming community",
+      "Developed resilience, strategic thinking, and time management skills in high-pressure competitive environments"
+    ],
+    "technologies": ["Algorithm Design", "C/C++", "Python", "Competitive Programming", "Algorithm Optimization", "Problem Solving", "Programming Efficiency", "Time Management", "ICPC", "SWERC"]
+  },
+  {
+    "title": "VR Research Intern at Suwa University",
+    "period": "June 2023 - August 2023",
+    "description": "Conducted a 2-month research internship at Suwa University on behavioral changes in virtual reality, focusing on experimental design and data analysis in an interdisciplinary team environment.",
+    "achievements": [
+      "Conducted 2-month research internship on behavioral changes in virtual reality",
+      "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
+      "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
+      "Collaborated with psychologists and engineers in interdisciplinary research projects on VR applications",
+      "Developed VR prototypes using Unity for research simulations and user testing",
+      "Presented research findings at university symposiums, contributing to academic discussions on VR technology"
+    ],
+    "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology", "Experimental Design", "Interdisciplinary Collaboration"]
+  },
+  {
+    "title": "Volunteer & Community Leader at INSAlgo & Tech Communities",
+    "period": "2023 - 2025",
+    "description": "Active member and organizer in tech communities, leading initiatives to foster learning, collaboration, and professional development in computer science and programming.",
+    "achievements": [
+      "President of INSAlgo (2025)",
+      "Vice-President of AEDI (2025)",
+      "Treasurer of ADT (2023)",
+      "Treasurer of INSAlgo (2024)"
+    ],
+    "technologies": ["Event Organization", "Team Coordination", "Leadership", "Mentorship", "Community Impact", "Project Management"]
+  }
+]

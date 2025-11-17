@@ -57,9 +57,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>© {currentYear} TetraZero. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="/privacy">Privacy Policy</a>
+            <a href="/privacy.html">Privacy Policy</a>
             <span>•</span>
-            <a href="/terms">Terms of Service</a>
+            <a href="/terms.html">Terms of Service</a>
           </div>
         </div>
       </div>

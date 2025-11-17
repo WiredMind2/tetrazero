@@ -15,6 +15,8 @@ const skills: Skill[] = [
   { name: "C#", level: 80, category: "programming" },
   { name: "PHP", level: 75, category: "programming" },
   { name: "Java", level: 70, category: "programming" },
+  { name: "Ruby", level: 50, category: "programming" },
+  { name: "Rust", level: 50, category: "programming" },
 
   // Technical Domains
   { name: "Algorithms", level: 95, category: "domains" },
@@ -27,11 +29,11 @@ const skills: Skill[] = [
   { name: "Algorithmic Trading", level: 70, category: "domains" },
 
   // Languages
-  { name: "French", level: 95, category: "languages" },
-  { name: "English", level: 90, category: "languages" },
-  { name: "Creole", level: 85, category: "languages" },
-  { name: "Japanese", level: 80, category: "languages" },
-  { name: "German", level: 75, category: "languages" },
+  { name: "French (native)", level: 100, category: "languages" },
+  { name: "English (C2)", level: 95, category: "languages" },
+  { name: "Japanese (JLPT N4)", level: 80, category: "languages" },
+  { name: "German (B2)", level: 75, category: "languages" },
+  { name: "Creole (fluent)", level: 90, category: "languages" },
 ];
 
 export default function Skills() {

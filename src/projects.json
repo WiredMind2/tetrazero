@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Gymtracker",
+    "title": "Gym Tracker",
     "description": "\"A React and Tailwind CSS workout tracking app providing progress charts, template management, and exercise library features.\"",
     "longDescription": "GymTracker is a React-based workout tracking application featuring real-time progress visualization with Chart.js, workout logging, and template management. The app includes a pre-loaded exercise library with custom exercise creation, progress analytics, dark mode, and PWA functionality\u2014all styled with responsive Tailwind CSS. Designed with a GitHub Actions deployment pipeline, it offers export/import capabilities and full mobile optimization for seamless fitness tracking.",
     "techStack": [
@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "title": "Animemanager",
+    "title": "Anime Manager",
     "description": "A Python application to search, manage, automatically download, and watch anime episodes with torrent integration, database aggregation, and media playback.",
     "longDescription": "AnimeManager is a comprehensive Python application designed to streamline the anime-watching process by integrating multiple anime database searches, torrent retrieval, and media playback into a single tool. It enables users to search across thousands of animes, download torrents directly via Qbittorrent with automated file organization, and watch content seamlessly using built-in media players. The app simplifies the end-to-end experience\u2014from discovery to viewing\u2014while offering customizable options for torrent clients and adaptable folder management.",
     "techStack": [
@@ -40,7 +40,7 @@
   },
   {
     "id": 4,
-    "title": "Tts",
+    "title": "TTS",
     "description": "A Python library for text-to-speech synthesis with support for multiple models and voice cloning.",
     "longDescription": "TTS is a Python-based text-to-speech synthesis library designed to convert written text into natural-sounding speech. It supports multiple voices, customizable speech parameters (such as pitch and speed), and various output formats (WAV, MP3) for integration into applications. The library offers a simple API for developers and includes pre-trained models for efficient deployment across different platforms.",
     "techStack": [
@@ -53,7 +53,7 @@
   },
   {
     "id": 5,
-    "title": "Image",
+    "title": "Image Processing Library",
     "description": "A Python library for image processing utilities.",
     "longDescription": "A Python-based toolkit for efficient image processing and manipulation, supporting common operations such as loading, saving, transforming, and applying filters to images in various formats. Key features include batch processing, format conversion (JPG, PNG, WEBP, etc.), resizing, cropping, color adjustments, and basic computer vision functions like edge detection. Designed for simplicity and extensibility, it enables developers to integrate image workflows into applications with minimal dependencies.",
     "techStack": [

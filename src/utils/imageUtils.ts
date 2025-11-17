@@ -1,4 +1,4 @@
-export const astronautImageCount = 100;
+export const astronautImageCount = 1000;
 
 export const getRandomAstronautImage = () => {
   const randomIndex = Math.floor(Math.random() * astronautImageCount) + 1;

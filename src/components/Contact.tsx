@@ -75,24 +75,29 @@ export default function Contact() {
     setSubmitStatus('idle');
     
     try {
-      // TODO: Replace with your actual email service (EmailJS, SendGrid, etc.)
-      // For now, simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Example: Using EmailJS
-      // await emailjs.send(
-      //   'YOUR_SERVICE_ID',
-      //   'YOUR_TEMPLATE_ID',
-      //   formData,
-      //   'YOUR_PUBLIC_KEY'
-      // );
-      
-      console.log('Form submitted:', formData);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      const response = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
@@ -129,7 +134,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <a href="mailto:contact@tetrazero.com">contact@tetrazero.com</a>
+                  <a href="mailto:william@michaud.re">william@michaud.re</a>
                 </div>
               </div>
 

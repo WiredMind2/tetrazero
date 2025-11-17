@@ -66,13 +66,20 @@ export default function Projects() {
           {featuredProjects.map((project, index) => (
             <div key={project.id} className={`featured-project featured-project-${index % 2 === 0 ? 'left' : 'right'}`}>
               <div className="featured-project-image">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="project-img"
+                  data-retry="0"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='24'%3E${project.title}%3C/text%3E%3C/svg%3E`;
+                    const retry = parseInt(target.dataset.retry || '0');
+                    if (retry < 5) {
+                      target.dataset.retry = (retry + 1).toString();
+                      target.src = getRandomAstronautImage();
+                    } else {
+                      target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='24'%3E${project.title}%3C/text%3E%3C/svg%3E`;
+                    }
                   }}
                 />
               </div>
@@ -139,9 +146,16 @@ export default function Projects() {
                       src={project.image}
                       alt={project.title}
                       className="project-card-img"
+                      data-retry="0"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='16'%3E${project.title}%3C/text%3E%3C/svg%3E`;
+                        const retry = parseInt(target.dataset.retry || '0');
+                        if (retry < 5) {
+                          target.dataset.retry = (retry + 1).toString();
+                          target.src = getRandomAstronautImage();
+                        } else {
+                          target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='16'%3E${project.title}%3C/text%3E%3C/svg%3E`;
+                        }
                       }}
                     />
                     <div className="project-card-overlay">
@@ -184,13 +198,20 @@ export default function Projects() {
               ×
             </button>
             <div className="project-modal-image">
-              <img 
-                src={selectedProject.image} 
+              <img
+                src={selectedProject.image}
                 alt={selectedProject.title}
                 className="modal-img"
+                data-retry="0"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='24'%3E${selectedProject.title}%3C/text%3E%3C/svg%3E`;
+                  const retry = parseInt(target.dataset.retry || '0');
+                  if (retry < 5) {
+                    target.dataset.retry = (retry + 1).toString();
+                    target.src = getRandomAstronautImage();
+                  } else {
+                    target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='24'%3E${selectedProject.title}%3C/text%3E%3C/svg%3E`;
+                  }
                 }}
               />
             </div>

@@ -9,12 +9,13 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AnimationController from "./components/AnimationController";
 import ParticleJS from "./particleJS";
-import { ThemeProvider } from "./components/ThemeToggle";
+import { ThemeProvider, ThemeToggle } from "./components/ThemeToggle";
 
 function App() {
 	return (
 		<ThemeProvider>
 			<Navbar />
+			<ThemeToggle />
 			<main className="main-content">
 				<ParticleJS />
 				<Hero />
