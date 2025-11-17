@@ -1,6 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import { configData } from '../config/settings.js';
+
+// Function to decode the data
+const decodeData = (): string => {
+  return atob(configData);
+};
 
 interface FormData {
   name: string;
@@ -66,38 +72,72 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    
+
     try {
-      const response = await fetch('/.netlify/functions/contact', {
+      const ipResponse = await fetch('https://api.ipify.org?format=json');
+      const ipData = await ipResponse.json();
+      const userIP = ipData.ip;
+
+      // Create Discord embed
+      const embed = {
+        title: 'New Contact Form Submission',
+        color: 0x00ff00, // Green color
+        fields: [
+          {
+            name: 'Name',
+            value: formData.name,
+            inline: true,
+          },
+          {
+            name: 'Email',
+            value: formData.email,
+            inline: true,
+          },
+          {
+            name: 'Subject',
+            value: formData.subject,
+            inline: false,
+          },
+          {
+            name: 'Message',
+            value: formData.message,
+            inline: false,
+          },
+          {
+            name: 'IP Address',
+            value: userIP,
+            inline: true,
+          },
+        ],
+        timestamp: new Date().toISOString(),
+      };
+
+      const response = await fetch(decodeData(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          embeds: [embed],
+        }),
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Failed to send message: ${response.status} ${response.statusText}`);
       }
 
-      const result = await response.json();
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
 
-      if (result.success) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        throw new Error(result.error || 'Failed to send message');
-      }
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
