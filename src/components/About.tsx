@@ -15,28 +15,28 @@ export default function About() {
         <div className="about-content">
           <div className="about-text">
             <p className="about-intro">
-              Student in computer science and engineering at INSA Lyon. Passionate about IT and programming since a young age. Regularly participates in national computer science competitions and has developed numerous applications as part of personal projects.
+              Hey there, I'm William! I'm a student in computer science and engineering at INSA Lyon. I've loved IT and programming since a young age, and I regularly participate in computer science competitions. I've also developed numerous personal projects, that you can check out on my Github!
             </p>
             
             <div className="about-details">
               <div className="about-detail-item">
                 <h3>Competitive Programming</h3>
                 <p>
-                  4-time finalist in Prologin (2022, 2023, 2024, 2025), 5th place in 2023, responsible for designing competition exercises. Winner of Match'Up Coding Battle 2020 among 500,000+ participants. Participant in Castor Informatique (France-IOI). Part of SWERC/ICPC team representing INSA at European level (2024, 2025). Associative: President INSAlgo 2025, Vice-President AEDI 2025, Treasurer ADT 2023, INSAlgo 2024.
+                  I regularly compete in various computer science competitions. Recently, my team and I was ranked 3rd in France during the ICPC (SWERC 2026), so we will compete in the ICPC European Championship in February!
                 </p>
               </div>
               
               <div className="about-detail-item">
-                <h3>Academic Background</h3>
+                <h3>Background</h3>
                 <p>
-                  Student in computer science and engineering at INSA Lyon.
+                  I'm studying computer science and engineering at INSA Lyon. I'm also volunteering in multiple student associations!
                 </p>
               </div>
               
               <div className="about-detail-item">
                 <h3>Languages & Interests</h3>
                 <p>
-                  Fluent in five languages: French (native), English (C2), Japanese (JLPT N4), German (B2), Creole. Passionate about mathematics, astronomy, algorithms, gym and trail running.
+                  I'm fluent in five languages: French (native), English (C2), Japanese (JLPT N4), German (B2) and Creole (native). I like computers, mathematics, video games, going to the gym and running.
                 </p>
               </div>
             </div>

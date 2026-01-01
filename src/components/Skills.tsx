@@ -16,7 +16,6 @@ const skills: Skill[] = [
   { name: "PHP", level: 75, category: "programming" },
   { name: "Java", level: 70, category: "programming" },
   { name: "Ruby", level: 50, category: "programming" },
-  { name: "Rust", level: 50, category: "programming" },
 
   // Technical Domains
   { name: "Algorithms", level: 95, category: "domains" },
@@ -24,9 +23,9 @@ const skills: Skill[] = [
   { name: "Web Development", level: 85, category: "domains" },
   { name: "Image Processing", level: 80, category: "domains" },
   { name: "AI / Machine Learning", level: 75, category: "domains" },
+  { name: "Algorithmic Trading", level: 70, category: "domains" },
   { name: "Big Data", level: 70, category: "domains" },
   { name: "Cybersecurity", level: 65, category: "domains" },
-  { name: "Algorithmic Trading", level: 70, category: "domains" },
 
   // Languages
   { name: "French (native)", level: 100, category: "languages" },

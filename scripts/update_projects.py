@@ -177,7 +177,22 @@ def generate_long_description(repo):
 
     raise Exception("Failed to generate long description")
 
-def generate_tags(repo):
+def get_existing_tags():
+    """Read existing tags from projects.json"""
+    try:
+        if os.path.exists('src/projects.json'):
+            with open('src/projects.json', 'r', encoding='utf-8') as f:
+                projects = json.load(f)
+                tags = set()
+                for project in projects:
+                    if 'techStack' in project:
+                        tags.update(project['techStack'])
+                return list(tags)
+    except Exception as e:
+        print(f"Error reading existing tags: {e}")
+    return []
+
+def generate_tags(repo, existing_tags=None):
     """Generate tags for the repo using OpenRouter"""
     cache_key = f"tags_{repo['name']}"
     cached = get_from_cache(cache_key)
@@ -185,9 +200,11 @@ def generate_tags(repo):
         return cached
 
     readme = fetch_readme(repo['owner']['login'], repo['name'])
+    
+    existing_tags_str = ", ".join(existing_tags) if existing_tags else "None"
 
     try:
-        prompt = f"Generate a list of 3-5 technical tags (e.g., React, Python, Machine Learning) for a GitHub repository named '{repo['name']}' written in {repo['language'] or 'various languages'}. README content: {readme[:2000]}. Output only the tags as a comma-separated list, no other text."
+        prompt = f"Generate a list of 3-5 technical tags (e.g., React, Python, Machine Learning) for a GitHub repository named '{repo['name']}' written in {repo['language'] or 'various languages'}. README content: {readme[:2000]}. \n\nExisting tags in the system: {existing_tags_str}.\n\nPlease prioritize using existing tags if they are relevant. If the existing tags are not sufficient, create new ones. Output only the tags as a comma-separated list, no other text."
         headers = {"Authorization": f"Bearer {OPENROUTER_API_KEY}"}
         response = requests.post(OPENROUTER_URL, json={
             'model': OPENROUTER_MODEL,
@@ -283,18 +300,27 @@ def fetch_pinned_repos(username):
 def update_projects_json(repos, pinned_repos=[]):
     """Update the projects.json file with new projects"""
     projects = []
+    
+    # Initialize with existing tags
+    all_tags = set(get_existing_tags())
+    print(f"Loaded {len(all_tags)} existing tags.")
 
     for i, repo in enumerate(repos[:MAX_REPOS]):  # Top MAX_REPOS repos
         print(f"Processing {i+1}/{MAX_REPOS}: {repo['name']} - Generating descriptions...")
         try:
             fetch_readme(repo['owner']['login'], repo['name'])
+            
+            # Generate tags with awareness of existing tags
+            tags = generate_tags(repo, list(all_tags))
+            # Update our running list of tags
+            all_tags.update(tags)
 
             project = {
                 'id': i + 1,
                 'title': repo['name'].replace('-', ' ').title(),
                 'description': generate_description(repo),
                 'longDescription': generate_long_description(repo),
-                'techStack': generate_tags(repo),
+                'techStack': tags,
                 'image': f"/projects/{repo['name'].lower().replace('-', '')}.jpg",
                 'githubUrl': repo['html_url'],
                 'featured': repo['name'] in pinned_repos,

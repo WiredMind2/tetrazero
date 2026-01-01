@@ -199,7 +199,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4>Availability</h4>
-                  <p>Open to opportunities</p>
+                  <p>Starting from May 2026</p>
                 </div>
               </div>
             </div>

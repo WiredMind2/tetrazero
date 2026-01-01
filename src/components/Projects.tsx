@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import projectsData from '../projects.json';
 import { getRandomAstronautImage } from '../utils/imageUtils';
@@ -27,6 +27,8 @@ const projects: Project[] = (projectsData as Omit<Project, 'image'>[]).map((proj
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [visibleCount, setVisibleCount] = useState<number>(6);
+  const filtersRef = useRef<HTMLDivElement>(null);
 
   // Get unique technologies from projects data
   const availableTechnologies = Array.from(new Set(projects.flatMap(p => p.techStack))).sort();
@@ -35,7 +37,13 @@ export default function Projects() {
     ? projects
     : projects.filter(p => p.techStack.includes(filter));
 
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+
   const featuredProjects = projects.filter(p => p.featured);
+
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [filter]);
 
   useEffect(() => {
     // Simple animation without ScrollTrigger to ensure it always runs
@@ -50,6 +58,24 @@ export default function Projects() {
         delay: 0.2 // Small delay to ensure DOM is ready
       }
     );
+  }, []);
+
+  useEffect(() => {
+    const filtersContainer = filtersRef.current;
+    if (filtersContainer) {
+      const handleWheel = (e: WheelEvent) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          filtersContainer.scrollLeft += e.deltaY;
+        }
+      };
+      
+      filtersContainer.addEventListener('wheel', handleWheel, { passive: false });
+      
+      return () => {
+        filtersContainer.removeEventListener('wheel', handleWheel);
+      };
+    }
   }, []);
 
   return (
@@ -119,7 +145,7 @@ export default function Projects() {
         <div className="all-projects">
           <h3 className="all-projects-title">All Projects</h3>
           
-          <div className="project-filters">
+          <div className="project-filters" ref={filtersRef}>
             <button 
               className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
               onClick={() => setFilter('all')}
@@ -138,7 +164,7 @@ export default function Projects() {
           </div>
 
           <div className="projects-grid">
-            {filteredProjects.map((project) => {
+            {visibleProjects.map((project) => {
               return (
                 <div key={project.id} className="project-card">
                   <div className="project-card-image">
@@ -183,6 +209,17 @@ export default function Projects() {
               );
             })}
           </div>
+
+          {visibleCount < filteredProjects.length && (
+            <div className="projects-load-more" style={{ textAlign: 'center', marginTop: '40px' }}>
+              <button 
+                className="btn btn-secondary"
+                onClick={() => setVisibleCount(prev => prev + 6)}
+              >
+                See More Projects
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

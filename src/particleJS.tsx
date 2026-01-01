@@ -52,7 +52,7 @@ export default function ParticleJS() {
 
 	const options: ISourceOptions = useMemo(
 		() => ({
-			fpsLimit: 120,
+			fpsLimit: 60,
 			interactivity: {
 				events: {
 					onClick: {
@@ -92,7 +92,7 @@ export default function ParticleJS() {
 						default: "bounce",
 					},
 					random: false,
-					speed: 5,
+					speed: 3,
 					straight: false,
 				},
 				number: {
@@ -115,6 +115,31 @@ export default function ParticleJS() {
 			},
 			detectRetina: true,
 			fullScreen: { enable: false },
+			responsive: [
+				{
+					maxWidth: 768,
+					options: {
+						particles: {
+							number: {
+								value: 30,
+							},
+							links: {
+								enable: false,
+							},
+							move: {
+								speed: 1,
+							},
+						},
+						interactivity: {
+							events: {
+								onHover: {
+									enable: false,
+								},
+							},
+						},
+					},
+				},
+			],
 		}), [],);
 
 	if (init) {

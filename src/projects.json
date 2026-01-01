@@ -235,6 +235,24 @@
     "category": "other"
   },
   {
+    "id": 19,
+    "title": "Helium",
+    "description": ".A modular Python Discord bot providing AI chat, image generation, moderation, leveling, and social roleplay features via plugins.",
+    "longDescription": "```css\n/**\n * Helium: A modular, multi-purpose Discord bot.\n *\n * Written in Python with Pycord, Helium utilizes a dynamic plugin system\n * to deliver AI chat, DALL-E image generation, and robust moderation.\n * Features include an XP leveling system and social roleplay tools\n * to enhance community engagement.\n */\n```",
+    "techStack": [
+      "CSS",
+      "Python",
+      "Discord API",
+      "Groq",
+      "OpenAI",
+      "DALL-E"
+    ],
+    "image": "/projects/helium.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Helium",
+    "featured": true,
+    "category": "web"
+  },
+  {
     "id": 21,
     "title": "Flashcards",
     "description": "A Next.js application written in TypeScript for creating and managing flashcards.",
