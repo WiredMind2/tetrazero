@@ -65,7 +65,7 @@ export default function Experience() {
 
         <div className="experience-cta">
           <p>Want to know more about my experience?</p>
-          <a href="/resume.pdf" className="btn btn-primary" download>
+          <a href="/Resume.pdf" className="btn btn-primary" download>
             Download Resume
           </a>
         </div>

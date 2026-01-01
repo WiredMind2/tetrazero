@@ -1,11 +1,148 @@
 [
   {
     "id": 1,
-    "title": "Gym Tracker",
-    "description": "\"A React and Tailwind CSS workout tracking app providing progress charts, template management, and exercise library features.\"",
-    "longDescription": "GymTracker is a React-based workout tracking application featuring real-time progress visualization with Chart.js, workout logging, and template management. The app includes a pre-loaded exercise library with custom exercise creation, progress analytics, dark mode, and PWA functionality\u2014all styled with responsive Tailwind CSS. Designed with a GitHub Actions deployment pipeline, it offers export/import capabilities and full mobile optimization for seamless fitness tracking.",
+    "title": "Wiredmind2",
+    "description": "A collection of Python scripts and projects created by CS student William Michaud.",
+    "longDescription": "WiredMind2 is a Python library designed to provide efficient algorithmic solutions and reusable components for competitive programming challenges. It offers a set of optimized tools and data structures aimed at simplifying complex problem-solving tasks, making it an essential resource for developers preparing for contests like the ICPC.",
     "techStack": [
-      "JavaScript"
+      "Python",
+      "Algorithm",
+      "Competitive Programming",
+      "Python Scripting",
+      "GitHub Profile"
+    ],
+    "image": "/projects/wiredmind2.jpg",
+    "githubUrl": "https://github.com/WiredMind2/WiredMind2",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 2,
+    "title": "Invertedpendulum",
+    "description": "This Python project simulates an inverted pendulum (CartPole), uses a Reinforcement Learning agent to balance it, and provides a web-based UI for real-time visualization.",
+    "longDescription": "A Python project that simulates an inverted pendulum (CartPole) and utilizes Reinforcement Learning, specifically the PPO algorithm from Stable Baselines3, to train an agent to balance it. The application features a real-time, web-based visualization built with FastAPI and WebSockets, allowing users to observe the trained model's performance in their browser. It includes scripts for training the model and serving the interactive simulation UI.",
+    "techStack": [
+      "Python",
+      "Reinforcement Learning",
+      "FastAPI",
+      "WebSockets",
+      "Stable Baselines3"
+    ],
+    "image": "/projects/invertedpendulum.jpg",
+    "githubUrl": "https://github.com/WiredMind2/InvertedPendulum",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 3,
+    "title": "Forcedirectedgraphs",
+    "description": "A high-performance Python library for visualizing large graphs using force-directed layout algorithms with multiprocessing and Deep Zoom Image output.",
+    "longDescription": "This repository provides a high-performance Python tool for visualizing large-scale graphs using force-directed layout algorithms. It leverages multiprocessing and shared memory for efficient computation, using SQLite to manage memory usage effectively. The final output is rendered as a Deep Zoom Image (DZI), enabling interactive exploration of massive graphs through a local web server.",
+    "techStack": [
+      "Python",
+      "NumPy",
+      "SQLite",
+      "Multiprocessing",
+      "Deep Zoom"
+    ],
+    "image": "/projects/forcedirectedgraphs.jpg",
+    "githubUrl": "https://github.com/WiredMind2/ForceDirectedGraphs",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 4,
+    "title": "Projet Alia",
+    "description": "A Prolog implementation of the Connect Four game for the ALIA project, complete with an AI tournament configuration and automated tests.",
+    "longDescription": "This GitHub repository contains the source code for the Prolog implementation of the ALIA project, specifically a strategic \"Puissance 4\" (Connect Four) game engine. It features a complete game environment allowing human players to start matches via the `start.` predicate, alongside a robust testing suite for verifying logic and AI configurations. Additionally, the repository supports automated tournament setups, enabling users to define and test various AI agents with specific parameters through the `tournament_config.pl` file.",
+    "techStack": [
+      "Prolog",
+      "AI",
+      "Game Engine",
+      "Tournament"
+    ],
+    "image": "/projects/projetalia.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Projet-ALIA",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 5,
+    "title": "Backtesting",
+    "description": "A comprehensive, production-ready Python system for algorithmic trading backtesting with sentiment analysis and machine learning.",
+    "longDescription": "A production-ready algorithmic trading backtesting system featuring news-based sentiment analysis, multi-horizon LightGBM predictive models, and intraday backtesting with realistic slippage and commission modeling. The repository includes interactive OHLCV charts with AI prediction overlays, confidence bands, and real-time monitoring capabilities for 1, 3, and 7-day trading horizons.",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "Trading",
+      "Backtesting",
+      "LightGBM"
+    ],
+    "image": "/projects/backtesting.jpg",
+    "githubUrl": "https://github.com/WiredMind2/backtesting",
+    "featured": true,
+    "category": "fullstack"
+  },
+  {
+    "id": 6,
+    "title": "Awale Game",
+    "description": "A modular C implementation of the Awale game featuring a clean client/server architecture with unit-testable logic and single-socket communication.",
+    "longDescription": "Awale-Game is a modular C implementation of the traditional Awale (Oware/Mancala) game, designed with a strict separation between the pure game logic and networking layers to facilitate unit testing and maintainability. The project features a client/server architecture that uses UDP broadcasts for automatic server discovery on the local network, followed by a simplified single-socket TCP connection for gameplay communication. It supports cross-platform compilation for Linux, macOS, and Windows, includes thread-safe handling for concurrent games, and offers a text-based client interface with internationalization support for both English and French.",
+    "techStack": [
+      "C",
+      "Networking",
+      "Game-Development",
+      "UDP",
+      "TCP"
+    ],
+    "image": "/projects/awalegame.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Awale-Game",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 7,
+    "title": "Openrouterclient",
+    "description": "A Python CLI tool that connects to OpenRouter's OpenAI-compatible API to run chat completions.",
+    "longDescription": "A minimal Python CLI client for interacting with OpenAI-compatible chat completion endpoints through OpenRouter. Key features include simple .env configuration management, command-line argument parsing for API keys and models, and support for custom endpoints and optional ranking headers (referer and X-Title). It is designed to be a lightweight, synchronous tool for quick API testing without external dependencies.",
+    "techStack": [
+      "Python",
+      "CLI",
+      "OpenAI API",
+      "Dotenv"
+    ],
+    "image": "/projects/openrouterclient.jpg",
+    "githubUrl": "https://github.com/WiredMind2/OpenRouterClient",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 8,
+    "title": "Pld Agile",
+    "description": "A Python FastAPI backend for the PLD-AGILE project, designed for scalability.",
+    "longDescription": "PLD-AGILE is a full-stack web application built with a modular Python FastAPI backend and a modern Node.js frontend. It provides a scalable architecture designed for easy extensibility, featuring a RESTful API with interactive documentation and a responsive user interface. The repository includes complete setup guides for both the API server and the client-side application to streamline development and deployment.",
+    "techStack": [
+      "Python",
+      "FastAPI",
+      "Node.js",
+      "React"
+    ],
+    "image": "/projects/pldagile.jpg",
+    "githubUrl": "https://github.com/WiredMind2/PLD-AGILE",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 9,
+    "title": "Gymtracker",
+    "description": "A modern workout tracking app built with React, Tailwind CSS, and Chart.js for monitoring progress and managing exercises.",
+    "longDescription": "A modern, responsive workout tracking application built with React and Tailwind CSS to help you track workouts and monitor progress with real charts. It features customizable templates, a pre-loaded exercise library with over 45 exercises, and smart workout tracking to manage sets, reps, and weights. The app includes advanced analytics for progress visualization, dark mode support, data export/import for backups, and is fully optimized for mobile and PWA installation.",
+    "techStack": [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Vite",
+      "Chart.js"
     ],
     "image": "/projects/gymtracker.jpg",
     "githubUrl": "https://github.com/WiredMind2/GymTracker",
@@ -13,12 +150,16 @@
     "category": "web"
   },
   {
-    "id": 2,
-    "title": "Anime Manager",
-    "description": "A Python application to search, manage, automatically download, and watch anime episodes with torrent integration, database aggregation, and media playback.",
-    "longDescription": "AnimeManager is a comprehensive Python application designed to streamline the anime-watching process by integrating multiple anime database searches, torrent retrieval, and media playback into a single tool. It enables users to search across thousands of animes, download torrents directly via Qbittorrent with automated file organization, and watch content seamlessly using built-in media players. The app simplifies the end-to-end experience\u2014from discovery to viewing\u2014while offering customizable options for torrent clients and adaptable folder management.",
+    "id": 10,
+    "title": "Animemanager",
+    "description": "AnimeManager is a Python application that handles anime discovery from multiple databases, torrent searching, automatic downloads via Qbittorent, and provides built-in media playback.",
+    "longDescription": "AnimeManager is a comprehensive Python application that automates the entire anime watching process, from discovery to playback. It allows users to search thousands of titles across multiple database websites and find available torrents with a single click. Featuring automatic download management via Qbittorrent and directory organization, the app also includes three built-in media players for an immediate, seamless viewing experience.",
     "techStack": [
-      "Python"
+      "Python",
+      "PyQt",
+      "Web Scraping",
+      "Torrent",
+      "Media Player"
     ],
     "image": "/projects/animemanager.jpg",
     "githubUrl": "https://github.com/WiredMind2/AnimeManager",
@@ -26,12 +167,16 @@
     "category": "fullstack"
   },
   {
-    "id": 3,
+    "id": 11,
     "title": "Manga Reader",
-    "description": "\"Manga-Reader is a Python-built FastAPI/SvelteKit web app for reading manga/manhwa from archives or folders with user accounts, progress tracking, and responsive RTL/TTB reading modes.\"",
-    "longDescription": "A modern manga reader web application built with Python (FastAPI) and SvelteKit, offering comprehensive multi-format support for archives (CBZ, CBR, ZIP, RAR) and folder-based manga libraries. It features secure user authentication, progress tracking across devices, responsive reading modes (RTL manga and top-to-bottom manhwa), and server-side image optimization while preserving original files. The application provides a clean, customizable interface using ShadCN components and TailwindCSS, with optional metadata management for organized browsing.",
+    "description": "A responsive web application for reading manga from local archives (ZIP, RAR, CBZ, CBR) with user authentication and progress tracking, built with a FastAPI backend and SvelteKit frontend.",
+    "longDescription": "A modern manga reader web application built with a Python FastAPI backend and SvelteKit frontend, designed to browse and read manga from local archives or folders. It supports multi-format archives (ZIP, RAR, CBZ, CBR), features server-side image optimization, and includes user authentication with personal reading progress tracking. The application offers a fully responsive interface with right-to-left (manga) and top-to-bottom (manhwa) reading modes.",
     "techStack": [
-      "Python"
+      "FastAPI",
+      "Svelte",
+      "Python",
+      "TypeScript",
+      "Docker"
     ],
     "image": "/projects/mangareader.jpg",
     "githubUrl": "https://github.com/WiredMind2/Manga-Reader",
@@ -39,42 +184,85 @@
     "category": "fullstack"
   },
   {
-    "id": 4,
-    "title": "TTS",
-    "description": "A Python library for text-to-speech synthesis with support for multiple models and voice cloning.",
-    "longDescription": "TTS is a Python-based text-to-speech synthesis library designed to convert written text into natural-sounding speech. It supports multiple voices, customizable speech parameters (such as pitch and speed), and various output formats (WAV, MP3) for integration into applications. The library offers a simple API for developers and includes pre-trained models for efficient deployment across different platforms.",
+    "id": 12,
+    "title": "Custom_Agent",
+    "description": "A Python-based AI agent with interactive CLI and web API that connects to LLMs like Ollama and integrates MCP servers for extended functionality.",
+    "longDescription": "A Python-based AI agent that connects to multiple LLM providers including Ollama, OpenAI, Anthropic, and GitHub Copilot CLI. It integrates with MCP servers for extended tool functionality and offers both an interactive CLI and FastAPI-based REST API for versatile usage. Features include streaming responses, automatic tool calling, persistent conversation management, and real-time provider switching.",
     "techStack": [
-      "Python"
+      "Python",
+      "FastAPI",
+      "Ollama",
+      "Model Context Protocol (MCP)",
+      "LLM Integration"
     ],
-    "image": "/projects/tts.jpg",
-    "githubUrl": "https://github.com/WiredMind2/TTS",
+    "image": "/projects/custom_agent.jpg",
+    "githubUrl": "https://github.com/WiredMind2/custom_agent",
     "featured": false,
     "category": "fullstack"
   },
   {
-    "id": 5,
-    "title": "Image Processing Library",
-    "description": "A Python library for image processing utilities.",
-    "longDescription": "A Python-based toolkit for efficient image processing and manipulation, supporting common operations such as loading, saving, transforming, and applying filters to images in various formats. Key features include batch processing, format conversion (JPG, PNG, WEBP, etc.), resizing, cropping, color adjustments, and basic computer vision functions like edge detection. Designed for simplicity and extensibility, it enables developers to integrate image workflows into applications with minimal dependencies.",
+    "id": 13,
+    "title": "Airwatcher",
+    "description": "AirWatcher is a C++ application for collecting and analyzing air quality data to help users monitor environmental pollution.",
+    "longDescription": "A C++ application designed to monitor and analyze air quality by collecting and processing atmospheric pollution data. The software offers features for data analysis, such as estimating air quality at specific coordinates, identifying unreliable sensors, and assessing the impact of purifiers. It provides detailed statistics, including average air quality per zone, and supports multiple user profiles like government agencies, individuals, and providers.",
     "techStack": [
-      "Python"
+      "C++",
+      "CMake",
+      "Data Analysis",
+      "CSV",
+      "Algorithms"
     ],
-    "image": "/projects/image.jpg",
-    "githubUrl": "https://github.com/WiredMind2/image",
+    "image": "/projects/airwatcher.jpg",
+    "githubUrl": "https://github.com/WiredMind2/AirWatcher",
     "featured": false,
-    "category": "fullstack"
+    "category": "other"
   },
   {
-    "id": 6,
-    "title": "Manga Manager",
-    "description": "A Python tool for organizing, tracking, and managing personal manga collections digitally.",
-    "longDescription": "Manga-Manager is a Python-based tool for organizing and tracking your digital manga collection, featuring automated metadata retrieval, reading progress tracking, and file management. It supports batch processing for bulk imports, customizable shelving systems, and integration with popular manga databases to keep your library synchronized and easily searchable.",
+    "id": 18,
+    "title": "Chess2",
+    "description": "A C++ implementation of a three-player chess game on a hexagonal board, featuring an AI capable of managing complex multi-player interactions and unique geometric challenges.",
+    "longDescription": "A C++ implementation of a three-player chess variant on a 96-cell hexagonal board. This strategic game features classical chess rules adapted for three factions (White, Black, and Red), introducing complex geopolitical dynamics where players must avoid piece exchanges that benefit the third competitor. It includes an advanced Artificial Intelligence designed to handle multi-directional threats and the unique geometry of the hexagonal grid.",
     "techStack": [
-      "Python"
+      "C++",
+      "Game Development",
+      "Artificial Intelligence",
+      "Hexagonal Grid",
+      "Chess Engine"
     ],
-    "image": "/projects/mangamanager.jpg",
-    "githubUrl": "https://github.com/WiredMind2/Manga-Manager",
+    "image": "/projects/chess2.jpg",
+    "githubUrl": "https://github.com/WiredMind2/Chess2",
     "featured": false,
-    "category": "fullstack"
+    "category": "other"
+  },
+  {
+    "id": 21,
+    "title": "Flashcards",
+    "description": "A Next.js application written in TypeScript for creating and managing flashcards.",
+    "longDescription": "A Next.js flashcard application built with TypeScript for efficient learning and memorization. The project leverages modern React features and provides a foundation for creating, managing, and reviewing study decks. It includes a development environment configured with hot reloading and optimized fonts for a responsive user interface.",
+    "techStack": [
+      "TypeScript",
+      "Next.js",
+      "React"
+    ],
+    "image": "/projects/flashcards.jpg",
+    "githubUrl": "https://github.com/WiredMind2/flashcards",
+    "featured": false,
+    "category": "web"
+  },
+  {
+    "id": 22,
+    "title": "Register 1",
+    "description": "English: Secure a free, developer-friendly .is-a.dev subdomain for your project.\n\nFrench: Obtenez un sous-domaine .is-a.dev gratuit et adapt\u00e9 aux d\u00e9veloppeurs pour votre projet.\n\nGerman: Sichern Sie sich eine kostenlose, entwicklerfreundliche .is-a.dev-Subdomain f\u00fcr Ihr Projekt.\n\nSpanish: Asegura un subdominio .is-a.dev gratuito y orientado a desarrolladores para tu proyecto.\n\nPortuguese: Garanta um subdom\u00ednio .is-a.dev gratuito e amig\u00e1vel para desenvolvedores para o seu projeto.\n\nItaliano: Ottieni un sottodominio .is-a.dev gratuito e pensato per gli sviluppatori per il tuo progetto.\n\nRussian: \u041f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u043f\u043e\u0434\u0434\u043e\u043c\u0435\u043d .is-a.dev, \u0443\u0434\u043e\u0431\u043d\u044b\u0439 \u0434\u043b\u044f \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u043e\u0432, \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0433\u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0430.\n\nJapanese: \u958b\u767a\u8005\u5411\u3051\u306e\u7121\u6599\u30b5\u30d6\u30c9\u30e1\u30a4\u30f3 .is-a.dev \u3092\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u7528\u306b\u78ba\u4fdd\u3057\u307e\u3057\u3087\u3046\u3002\n\nChinese (Simplified): \u4e3a\u60a8\u7684\u9879\u76ee\u83b7\u53d6\u4e00\u4e2a\u514d\u8d39\u4e14\u5f00\u53d1\u8005\u53cb\u597d\u7684 .is-a.dev \u5b50\u57df\u540d\u3002\n\nKorean: \uac1c\ubc1c\uc790 \uce5c\ud654\uc801\uc778 \ubb34\ub8cc .is-a.dev \ud558\uc704 \ub3c4\uba54\uc778\uc744 \ud504\ub85c\uc81d\ud2b8\uc5d0 \ub4f1\ub85d\ud558\uc138\uc694.",
+    "longDescription": "English:\nis-a.dev is a service that allows developers to easily register a free \".is-a.dev\" subdomain for their personal websites or projects. It features a manual registration process where you can fork the repository and add a JSON file, as well as a convenient CLI tool. Once your pull request is approved and merged, you can enjoy your new custom domain.\n\nDeutsch:\nis-a.dev ist ein Service, der es Entwicklern erm\u00f6glicht, kostenlos eine \".is-a.dev\"-Subdomain f\u00fcr ihre pers\u00f6nlichen Webseiten oder Projekte zu registrieren. Es bietet einen manuellen Registrierungsprozess, bei dem du das Repository forken und eine JSON-Datei hinzuf\u00fcgst, sowie ein praktisches CLI-Tool. Sobald dein Pull-Request genehmigt und gemerged ist, kannst du deine neue benutzerdefinierte Domain genie\u00dfen.\n\nFran\u00e7ais:\nis-a.dev est un service qui permet aux d\u00e9veloppeurs de facilement enregistrer un sous-domaine \".is-a.dev\" gratuit pour leurs sites web personnels ou projets. Il propose un processus d'enregistrement manuel o\u00f9 vous pouvez forker le d\u00e9p\u00f4t et ajouter un fichier JSON, ainsi qu'un outil CLI pratique. Une fois votre pull request approuv\u00e9e et fusionn\u00e9e, vous pouvez profiter de votre nouveau domaine personnalis\u00e9.\n\nEspa\u00f1ol:\nis-a.dev es un servicio que permite a los desarrolladores registrar f\u00e1cilmente un subdominio \".is-a.dev\" gratuito para sus sitios web personales o proyectos. Cuenta con un proceso de registro manual donde puedes bifurcar el repositorio y a\u00f1adir un archivo JSON, as\u00ed como una herramienta CLI conveniente. Una vez que tu pull request sea aprobada y fusionada, podr\u00e1s disfrutar de tu nuevo dominio personalizado.\n\nItaliano:\nis-a.dev \u00e8 un servizio che permette agli sviluppatori di registrare facilmente un sottodominio \".is-a.dev\" gratuito per i loro siti web personali o progetti. Offre un processo di registrazione manuale in cui puoi fare il fork del repository e aggiungere un file JSON, cos\u00ec come un comodo strumento CLI. Una volta che la tua pull request verr\u00e0 approvata e unita, potrai goderti il tuo nuovo dominio personalizzato.\n\nPortuguese:\nis-a.dev \u00e9 um servi\u00e7o que permite aos desenvolvedores registrar facilmente um subdom\u00ednio \".is-a.dev\" gratuito para seus sites pessoais ou projetos. Possui um processo de registro manual onde voc\u00ea pode fazer o fork do reposit\u00f3rio e adicionar um arquivo JSON, al\u00e9m de uma ferramenta CLI conveniente. Uma vez que seu pull request for aprovado e mesclado, voc\u00ea pode desfrutar de seu novo dom\u00ednio personalizado.\n\nRussian:\nis-a.dev \u2014 \u044d\u0442\u043e \u0441\u0435\u0440\u0432\u0438\u0441, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c \u043b\u0435\u0433\u043a\u043e \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u043f\u043e\u0434\u0434\u043e\u043c\u0435\u043d \".is-a.dev\" \u0434\u043b\u044f \u0441\u0432\u043e\u0438\u0445 \u043b\u0438\u0447\u043d\u044b\u0445 \u0432\u0435\u0431-\u0441\u0430\u0439\u0442\u043e\u0432 \u0438\u043b\u0438 \u043f\u0440\u043e\u0435\u043a\u0442\u043e\u0432. \u041e\u043d \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442 \u0440\u0443\u0447\u043d\u043e\u0439 \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438, \u0433\u0434\u0435 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0444\u043e\u0440\u043a\u043d\u0443\u0442\u044c \u0440\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0439 \u0438 \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c JSON-\u0444\u0430\u0439\u043b, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0443\u0434\u043e\u0431\u043d\u044b\u0439 CLI-\u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442. \u041f\u043e\u0441\u043b\u0435 \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u044f \u0438 \u0441\u043b\u0438\u044f\u043d\u0438\u044f \u0432\u0430\u0448\u0435\u0433\u043e pull request \u0432\u044b \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0441\u043b\u0430\u0436\u0434\u0430\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c \u043d\u043e\u0432\u044b\u043c \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u043c \u0434\u043e\u043c\u0435\u043d\u043e\u043c.\n\nJapanese:\nis-a.dev\u306f\u3001\u958b\u767a\u8005\u304c\u500b\u4eba\u306eWeb\u30b5\u30a4\u30c8\u3084\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u7528\u306b\u7121\u6599\u306e\u300c.is-a.dev\u300d\u30b5\u30d6\u30c9\u30e1\u30a4\u30f3\u3092\u7c21\u5358\u306b\u767b\u9332\u3067\u304d\u308b\u30b5\u30fc\u30d3\u30b9\u3067\u3059\u3002\u30ea\u30dd\u30b8\u30c8\u30ea\u3092\u30d5\u30a9\u30fc\u30af\u3057\u3066JSON\u30d5\u30a1\u30a4\u30eb\u3092\u8ffd\u52a0\u3059\u308b\u624b\u52d5\u767b\u9332\u30d7\u30ed\u30bb\u30b9\u3068\u3001\u4fbf\u5229\u306aCLI\u30c4\u30fc\u30eb\u3092\u5099\u3048\u3066\u3044\u307e\u3059\u3002\u30d7\u30eb\u30ea\u30af\u30a8\u30b9\u30c8\u304c\u627f\u8a8d\u3055\u308c\u30de\u30fc\u30b8\u3055\u308c\u308b\u3068\u3001\u65b0\u3057\u3044\u30ab\u30b9\u30bf\u30e0\u30c9\u30e1\u30a4\u30f3\u3092\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002\n\nChinese:\nis-a.dev \u662f\u4e00\u9879\u670d\u52a1\uff0c\u5141\u8bb8\u5f00\u53d1\u8005\u8f7b\u677e\u6ce8\u518c\u514d\u8d39\u7684\u201c.is-a.dev\u201d\u5b50\u57df\u540d\uff0c\u7528\u4e8e\u4ed6\u4eec\u7684\u4e2a\u4eba\u7f51\u7ad9\u6216\u9879\u76ee\u3002\u5b83\u63d0\u4f9b\u624b\u52a8\u6ce8\u518c\u6d41\u7a0b\uff0c\u4f60\u53ef\u4ee5 fork \u4ed3\u5e93\u5e76\u6dfb\u52a0 JSON \u6587\u4ef6\uff0c\u4ee5\u53ca\u4fbf\u6377\u7684 CLI \u5de5\u5177\u3002\u4e00\u65e6\u4f60\u7684\u62c9\u53d6\u8bf7\u6c42\u88ab\u6279\u51c6\u5e76\u5408\u5e76\uff0c\u4f60\u5c31\u53ef\u4ee5\u4f7f\u7528\u4f60\u7684\u65b0\u81ea\u5b9a\u4e49\u57df\u540d\u4e86\u3002\n\nKorean:\nis-a.dev\ub294 \uac1c\ubc1c\uc790\uac00 \uac1c\uc778 \uc6f9\uc0ac\uc774\ud2b8\ub098 \ud504\ub85c\uc81d\ud2b8\uc5d0 \ub300\ud574 \ubb34\ub8cc \".is-a.dev\" \ud558\uc704 \ub3c4\uba54\uc778\uc744 \uc27d\uac8c \ub4f1\ub85d\ud560 \uc218 \uc788\ub294 \uc11c\ube44\uc2a4\uc785\ub2c8\ub2e4. \uc800\uc7a5\uc18c\ub97c \ud3ec\ud06c\ud558\uace0 JSON \ud30c\uc77c\uc744 \ucd94\uac00\ud558\ub294 \uc218\ub3d9 \ub4f1\ub85d \ud504\ub85c\uc138\uc2a4\uc640 \ud3b8\ub9ac\ud55c CLI \ub3c4\uad6c\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4. \ud480 \ub9ac\ud018\uc2a4\ud2b8\uac00 \uc2b9\uc778\ub418\uace0 \ubcd1\ud569\ub418\uba74 \uc0c8\ub85c\uc6b4 \uc0ac\uc6a9\uc790 \uc815\uc758 \ub3c4\uba54\uc778\uc744 \uc990\uae38 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+    "techStack": [
+      "Node.js",
+      "JavaScript",
+      "DNS",
+      "JSON"
+    ],
+    "image": "/projects/register1.jpg",
+    "githubUrl": "https://github.com/WiredMind2/register-1",
+    "featured": false,
+    "category": "other"
   }
 ]
