@@ -14,10 +14,10 @@ export default function Hero() {
               <span className="hero-name gradient-text">William Michaud</span>
             </h1>
             <h2 className="hero-subtitle">
-              Third-Year CS Student | Competitive Programmer
+              CS Student | Competitive Programmer
             </h2>
             <p className="hero-description">
-              Third-year Computer Science student at INSA Lyon, passionate about algorithms, competitive programming, and distributed systems. 
+              Computer Science student at INSA Lyon, passionate about algorithms, competitive programming, and distributed systems. 
               Competed in multiple competitions and part of various associations.
             </p>
             <div className="hero-cta">
