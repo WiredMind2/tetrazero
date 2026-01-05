@@ -237,8 +237,8 @@
   {
     "id": 19,
     "title": "Helium",
-    "description": ".A modular Python Discord bot providing AI chat, image generation, moderation, leveling, and social roleplay features via plugins.",
-    "longDescription": "```css\n/**\n * Helium: A modular, multi-purpose Discord bot.\n *\n * Written in Python with Pycord, Helium utilizes a dynamic plugin system\n * to deliver AI chat, DALL-E image generation, and robust moderation.\n * Features include an XP leveling system and social roleplay tools\n * to enhance community engagement.\n */\n```",
+    "description": "A modular Python Discord bot providing AI chat, image generation, moderation, leveling, and social roleplay features via plugins.",
+    "longDescription": "Helium: A modular, multi-purpose Discord bot.\n \n Written in Python with Pycord, Helium utilizes a dynamic plugin system\n to deliver AI chat, DALL-E image generation, and robust moderation.\n Features include an XP leveling system and social roleplay tools\n to enhance community engagement.",
     "techStack": [
       "CSS",
       "Python",
