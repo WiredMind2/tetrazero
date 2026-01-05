@@ -214,5 +214,7 @@ export default function AnimationController() {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, [qualityLevel]);  return null;
+  }, [qualityLevel]);
+  
+  return null;
 }

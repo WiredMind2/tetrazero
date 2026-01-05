@@ -136,12 +136,11 @@ export class PerformanceMonitor {
       this.poorFrameCount++;
       this.goodFrameCount = 0;
       
-      if (this.poorFrameCount >= this.POOR_FRAME_THRESHOLD && this.currentLevel === 'high') {
-        this.currentLevel = 'low';
-        this.poorFrameCount = 0;
-      } else if (this.poorFrameCount >= this.POOR_FRAME_THRESHOLD && this.currentLevel === 'medium') {
-        this.currentLevel = 'low';
-        this.poorFrameCount = 0;
+      if (this.poorFrameCount >= this.POOR_FRAME_THRESHOLD) {
+        if (this.currentLevel === 'high' || this.currentLevel === 'medium') {
+          this.currentLevel = 'low';
+          this.poorFrameCount = 0;
+        }
       }
     } else if (averageFps < this.FPS_THRESHOLD_MEDIUM) {
       this.poorFrameCount++;
@@ -160,10 +159,8 @@ export class PerformanceMonitor {
         if (averageFps >= this.FPS_RECOVERY_HIGH && this.currentLevel !== 'high') {
           this.currentLevel = 'high';
           this.goodFrameCount = 0;
-        } else if (averageFps >= this.FPS_RECOVERY_MEDIUM && this.currentLevel === 'low') {
-          this.currentLevel = 'medium';
-          this.goodFrameCount = 0;
-        } else if (averageFps >= this.FPS_RECOVERY_MEDIUM && this.currentLevel === 'disabled') {
+        } else if (averageFps >= this.FPS_RECOVERY_MEDIUM && 
+                   (this.currentLevel === 'low' || this.currentLevel === 'disabled')) {
           this.currentLevel = 'medium';
           this.goodFrameCount = 0;
         } else if (averageFps >= this.FPS_RECOVERY_LOW && this.currentLevel === 'disabled') {
