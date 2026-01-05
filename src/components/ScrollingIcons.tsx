@@ -1,7 +1,10 @@
 import React from "react";
 import techIcons from "../techIcons.json";
+import { useAnimationQuality } from "./AnimationQualityProvider";
 
 export default function ScrollingIcons() {
+  const { qualityLevel } = useAnimationQuality();
+
   // Get all icon entries
   const iconEntries = Object.entries(techIcons);
   
@@ -23,8 +26,16 @@ export default function ScrollingIcons() {
     </div>
   );
 
+  // Add quality class to control animation
+  const getQualityClass = () => {
+    if (qualityLevel === 'disabled') return 'animation-disabled';
+    if (qualityLevel === 'low') return 'animation-low';
+    if (qualityLevel === 'medium') return 'animation-medium';
+    return '';
+  };
+
   return (
-    <div className="scrolling-icons-container">
+    <div className={`scrolling-icons-container ${getQualityClass()}`}>
       {/* First row - scrolls left to right */}
       <div className="scrolling-row scroll-left-to-right">
         <div className="scrolling-content">

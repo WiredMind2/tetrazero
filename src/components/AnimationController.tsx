@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useAnimationQuality } from './AnimationQualityProvider';
 
 export default function AnimationController() {
   const [isClient, setIsClient] = useState(false);
+  const { qualityLevel } = useAnimationQuality();
 
   useEffect(() => {
     setIsClient(true);
@@ -21,19 +23,36 @@ export default function AnimationController() {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         gsap.set('.skill-bar-fill', { width: '0%' }); // Reset skill bars
 
+        // Disable animations if quality level is disabled
+        if (qualityLevel === 'disabled') {
+          // Show all content immediately without animations
+          gsap.set('.hero-text, section, .skill-bar-fill, .timeline-item', { 
+            opacity: 1, 
+            y: 0, 
+            x: 0 
+          });
+          return;
+        }
+
+        // Simplified animations for low quality
+        const isLowQuality = qualityLevel === 'low';
+        const isMediumQuality = qualityLevel === 'medium';
+
         // Hero animations
-        gsap.from('.hero-text', {
-          scrollTrigger: {
-            trigger: '.hero-section',
-            start: 'top center',
-            end: 'bottom center',
-            toggleActions: 'play none none reverse'
-          },
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: 'power3.out'
-        });
+        if (!isLowQuality) {
+          gsap.from('.hero-text', {
+            scrollTrigger: {
+              trigger: '.hero-section',
+              start: 'top center',
+              end: 'bottom center',
+              toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 50,
+            duration: isLowQuality ? 0.5 : 1,
+            ease: 'power3.out'
+          });
+        }
 
         // Section reveal animations
         const sections = gsap.utils.toArray('section:not(.hero-section):not(.projects-section)');
@@ -46,8 +65,8 @@ export default function AnimationController() {
               toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            y: 50,
-            duration: 0.8,
+            y: isLowQuality ? 20 : 50,
+            duration: isLowQuality ? 0.4 : 0.8,
             ease: 'power2.out'
           });
         });
@@ -64,26 +83,28 @@ export default function AnimationController() {
               toggleActions: 'play none none reverse'
             },
             width: targetWidth,
-            duration: 1.5,
+            duration: isLowQuality ? 0.8 : 1.5,
             ease: 'power2.out'
           });
         });
 
 
-        // Featured projects parallax
-        const featuredProjects = gsap.utils.toArray('.featured-project-image');
-        featuredProjects.forEach((project: any) => {
-          gsap.to(project, {
-            scrollTrigger: {
-              trigger: project,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1
-            },
-            y: -50,
-            ease: 'none'
+        // Featured projects parallax - only on medium and high
+        if (!isLowQuality) {
+          const featuredProjects = gsap.utils.toArray('.featured-project-image');
+          featuredProjects.forEach((project: any) => {
+            gsap.to(project, {
+              scrollTrigger: {
+                trigger: project,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: isMediumQuality ? 0.5 : 1
+              },
+              y: isMediumQuality ? -25 : -50,
+              ease: 'none'
+            });
           });
-        });
+        }
 
         // Timeline items animation
         gsap.from('.timeline-item', {
@@ -94,9 +115,9 @@ export default function AnimationController() {
             toggleActions: 'play none none reverse'
           },
           opacity: 0,
-          x: (index) => (index % 2 === 0 ? -50 : 50),
-          stagger: 0.2,
-          duration: 0.8,
+          x: isLowQuality ? 0 : (index) => (index % 2 === 0 ? -50 : 50),
+          stagger: isLowQuality ? 0.1 : 0.2,
+          duration: isLowQuality ? 0.4 : 0.8,
           ease: 'power2.out'
         });
 
@@ -117,7 +138,7 @@ export default function AnimationController() {
                 toggleActions: 'play none none reverse'
               },
               value: endValue,
-              duration: 2,
+              duration: isLowQuality ? 1 : 2,
               ease: 'power1.out',
               onUpdate: () => {
                 stat.textContent = text.replace(/^\d+/, Math.round(obj.value).toString());
@@ -143,38 +164,42 @@ export default function AnimationController() {
           });
         });
 
-        // Parallax effect for hero background
-        gsap.to('.hero-image-bg', {
-          scrollTrigger: {
-            trigger: '.hero-section',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1
-          },
-          scale: 1.2,
-          opacity: 0.1,
-          ease: 'none'
-        });
+        // Parallax effect for hero background - only on medium and high
+        if (!isLowQuality) {
+          gsap.to('.hero-image-bg', {
+            scrollTrigger: {
+              trigger: '.hero-section',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: isMediumQuality ? 0.5 : 1
+            },
+            scale: isMediumQuality ? 1.1 : 1.2,
+            opacity: 0.1,
+            ease: 'none'
+          });
+        }
 
-        // Tech icons hover animation (GSAP can enhance CSS hover)
-        const techIcons = gsap.utils.toArray('.tech-icon');
-        techIcons.forEach((icon: any) => {
-          icon.addEventListener('mouseenter', () => {
-            gsap.to(icon, {
-              scale: 1.1,
-              duration: 0.3,
-              ease: 'power2.out'
+        // Tech icons hover animation (GSAP can enhance CSS hover) - only on high quality
+        if (qualityLevel === 'high') {
+          const techIcons = gsap.utils.toArray('.tech-icon');
+          techIcons.forEach((icon: any) => {
+            icon.addEventListener('mouseenter', () => {
+              gsap.to(icon, {
+                scale: 1.1,
+                duration: 0.3,
+                ease: 'power2.out'
+              });
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+              gsap.to(icon, {
+                scale: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+              });
             });
           });
-          
-          icon.addEventListener('mouseleave', () => {
-            gsap.to(icon, {
-              scale: 1,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-        });
+        }
 
       } catch (error) {
         console.error('Error initializing animations:', error);
@@ -189,5 +214,5 @@ export default function AnimationController() {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);  return null;
+  }, [qualityLevel]);  return null;
 }
