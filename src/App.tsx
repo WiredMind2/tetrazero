@@ -10,23 +10,28 @@ import Footer from "./components/Footer";
 import AnimationController from "./components/AnimationController";
 import ParticleJS from "./particleJS";
 import { ThemeProvider, ThemeToggle } from "./components/ThemeToggle";
+import { AnimationQualityProvider } from "./components/AnimationQualityProvider";
+import PerformanceDebug from "./components/PerformanceDebug";
 
 function App() {
 	return (
 		<ThemeProvider>
-			<Navbar />
-			<ThemeToggle />
-			<main className="main-content">
-				<ParticleJS />
-				<Hero />
-				<About />
-				<Skills />
-				<Projects />
-				<Experience />
-				<Contact />
-			</main>
-			<Footer />
-			<AnimationController />
+			<AnimationQualityProvider>
+				<Navbar />
+				<ThemeToggle />
+				<main className="main-content">
+					<ParticleJS />
+					<Hero />
+					<About />
+					<Skills />
+					<Projects />
+					<Experience />
+					<Contact />
+				</main>
+				<Footer />
+				<AnimationController />
+				<PerformanceDebug />
+			</AnimationQualityProvider>
 		</ThemeProvider>
 	);
 }
