@@ -5,6 +5,7 @@ Automatically fetches GitHub repos and updates the portfolio projects
 """
 
 import os
+import sys
 import requests
 import json
 import sqlite3
@@ -16,13 +17,14 @@ load_dotenv()
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # OPENROUTER_MODEL = "tngtech/deepseek-r1t2-chimera:free"  # Change this to your preferred model
-OPENROUTER_MODEL = "xiaomi/mimo-v2-flash:free"
+OPENROUTER_MODEL = "tngtech/deepseek-r1t2-chimera:free"
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 # Cache settings
 CACHE_DB = "cache.db"
 CACHE_TTL = 86400  # 24 hours
+MAX_REPOS = 70
 
 def init_db():
     """Initialize the SQLite cache database"""
@@ -62,7 +64,6 @@ def save_to_cache(key, value):
     except Exception as e:
         print(f"Cache write error: {e}")
 
-MAX_REPOS = 50
 
 def fetch_github_repos(username):
     """Fetch public repositories from GitHub API"""
@@ -87,6 +88,64 @@ def fetch_github_repos(username):
         return data
     else:
         print(f"Error fetching repos: {response.status_code}")
+        return []
+
+def fetch_contributed_repos(username):
+    """Fetch repositories the user has contributed to (via PRs) excluding their own"""
+    cache_key = f"contributed_repos_{username}"
+    cached = get_from_cache(cache_key)
+    if cached:
+        print(f"Using cached contributed repos for {username}")
+        return cached
+
+    print(f"Searching for contributed repositories for {username}...")
+    url = "https://api.github.com/search/issues"
+    # Search for PRs authored by user, excluding user's own repos
+    # We use type:pr to find pull requests, and -user:{username} to exclude repos owned by the user
+    query = f"type:pr author:{username} -user:{username}"
+    params = {
+        'q': query,
+        'sort': 'updated',
+        'order': 'desc',
+        'per_page': 50  # Check last 50 PRs to find repositories
+    }
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
+
+    try:
+        response = requests.get(url, params=params, headers=headers)
+        if response.status_code == 200:
+            data = response.json()
+            items = data.get('items', [])
+            
+            repo_urls = set()
+            for item in items:
+                # The search result provides the repository API URL
+                repo_urls.add(item['repository_url'])
+            
+            repos = []
+            print(f"Found {len(repo_urls)} external repositories with contributions")
+            
+            for r_url in repo_urls:
+                try:
+                    # Fetch repo details needed for the portfolio
+                    r_res = requests.get(r_url, headers=headers)
+                    if r_res.status_code == 200:
+                        repo_data = r_res.json()
+                        # Only include if public
+                        if not repo_data.get('private', False):
+                            repos.append(repo_data)
+                    else:
+                        print(f"Failed to fetch repo details for {r_url}: {r_res.status_code}")
+                except Exception as e:
+                    print(f"Error fetching repo {r_url}: {e}")
+            
+            save_to_cache(cache_key, repos)
+            return repos
+        else:
+            print(f"Error searching contributed repos: {response.status_code} - {response.text}")
+            return []
+    except Exception as e:
+        print(f"Error in fetch_contributed_repos: {e}")
         return []
 
 def fetch_readme(owner, repo):
@@ -297,16 +356,56 @@ def fetch_pinned_repos(username):
         print(f"Error fetching pinned repos: {e}")
         return []
 
-def update_projects_json(repos, pinned_repos=[]):
+def update_projects_json(repos, pinned_repos=[], skip_existing=False):
     """Update the projects.json file with new projects"""
     projects = []
+    existing_projects_map = {}
+
+    # Load existing projects if skipping logic is enabled or just to preserve order/tags
+    try:
+        if os.path.exists('src/projects.json'):
+            with open('src/projects.json', 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+                for p in existing_data:
+                    if 'githubUrl' in p:
+                        existing_projects_map[p['githubUrl']] = p
+    except Exception as e:
+        print(f"Error reading existing projects: {e}")
     
     # Initialize with existing tags
     all_tags = set(get_existing_tags())
     print(f"Loaded {len(all_tags)} existing tags.")
 
     for i, repo in enumerate(repos[:MAX_REPOS]):  # Top MAX_REPOS repos
-        print(f"Processing {i+1}/{MAX_REPOS}: {repo['name']} - Generating descriptions...")
+        print(f"Processing {i+1}/{MAX_REPOS}: {repo['name']}...")
+        
+        # Check if project exists
+        existing_project = existing_projects_map.get(repo['html_url'])
+
+        # Check for ignore flag in existing project
+        if existing_project and existing_project.get('ignore') is True:
+            print(f"Preserving ignored project: {repo['name']}")
+            # Keep the existing data exactly as is, just update ID if needed to maintain order
+            existing_project['id'] = i + 1
+            projects.append(existing_project)
+            # Add its tags to the pool to prevent them from looking like "new" tags if used elsewhere
+            if 'techStack' in existing_project:
+                all_tags.update(existing_project['techStack'])
+            continue
+
+        # Check if project exists and we should skip reprocessing
+        if skip_existing and existing_project:
+            print(f"Skipping update for existing project: {repo['name']}")
+            project = existing_project
+            # Optional: Ensure ID is updated to match current sort order if desired, 
+            # or keep original ID. Here we align ID with current list position.
+            project['id'] = i + 1
+            # Still update featured status based on current pins
+            project['featured'] = repo['name'] in pinned_repos
+            projects.append(project)
+            continue
+
+        print(f"Generating data for {repo['name']}...")
         try:
             fetch_readme(repo['owner']['login'], repo['name'])
             
@@ -344,22 +443,75 @@ def update_projects_json(repos, pinned_repos=[]):
 
 def main():
     init_db()
+    
+    skip_existing = "--skip-existing" in sys.argv
+    if skip_existing:
+        print("Mode: Skipping existing projects in projects.json")
+
     username = "WiredMind2"
     print(f"Fetching repositories for {username}...")
 
-    repos = fetch_github_repos(username)
-    if not repos:
+    own_repos = fetch_github_repos(username) or []
+    contributed_repos = fetch_contributed_repos(username) or []
+    
+    all_repos = own_repos + contributed_repos
+
+    if not all_repos:
         print("No repositories found")
         return
 
-    print(f"Found {len(repos)} repositories")
+    print(f"Found {len(own_repos)} own repos and {len(contributed_repos)} contributed repos")
+
+    # Combine and deduplicate
+    all_repos = own_repos + contributed_repos
+    
+    # Group by repository name (case-insensitive) to handle forks/duplicates
+    repos_by_name = {}
+    for r in all_repos:
+        # Check if we already processed this specific repo ID (absolute duplicate)
+        # But we handle this via the grouping now
+        
+        name_key = r['name'].lower()
+        if name_key not in repos_by_name:
+            repos_by_name[name_key] = []
+        repos_by_name[name_key].append(r)
+
+    unique_repos = []
+    
+    for name_key, duplicates in repos_by_name.items():
+        if len(duplicates) == 1:
+            unique_repos.append(duplicates[0])
+        else:
+            # Handle duplicates (e.g. fork vs upstream)
+            # Strategy:
+            # 1. Prefer non-forks (original repos)
+            # 2. If fork status same, prefer higher star count
+            # 3. If tied, prefer the one owned by 'username'
+            
+            def sort_key(r):
+                is_source = not r.get('fork', False)
+                stars = r.get('stargazers_count', 0)
+                is_owned = r['owner']['login'].lower() == username.lower()
+                return (is_source, stars, is_owned)
+
+            # Sort descending
+            duplicates.sort(key=sort_key, reverse=True)
+            
+            # Pick the winner
+            winner = duplicates[0]
+            print(f"Duplicate content for '{winner['name']}': Selected {winner['full_name']} over {[d['full_name'] for d in duplicates[1:]]}")
+            unique_repos.append(winner)
 
     # Filter public repos
-    public_repos = [r for r in repos if not r.get('private', False)]
-    print(f"Using {len(public_repos)} public repositories")
+    public_repos = [r for r in unique_repos if not r.get('private', False)]
+    
+    # Sort by updated_at descending to mix them naturally
+    public_repos.sort(key=lambda x: x.get('updated_at', ''), reverse=True)
+    
+    print(f"Using {len(public_repos)} total public repositories")
 
     pinned_repos = fetch_pinned_repos(username)
-    update_projects_json(public_repos, pinned_repos)
+    update_projects_json(public_repos, pinned_repos, skip_existing)
 
     print("Portfolio update complete!")
 

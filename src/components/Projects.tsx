@@ -16,13 +16,16 @@ interface Project {
   githubUrl?: string;
   featured: boolean;
   category: 'web' | 'mobile' | 'fullstack' | 'other';
+  ignore?: boolean;
 }
 
-// Add images to projects data
-const projects: Project[] = (projectsData as Omit<Project, 'image'>[]).map((project) => ({
-  ...project,
-  image: getRandomAstronautImage()
-}));
+// Add images to projects data and filter out ignored projects
+const projects: Project[] = (projectsData as Omit<Project, 'image'>[])
+  .filter(project => !project.ignore)
+  .map((project) => ({
+    ...project,
+    image: getRandomAstronautImage()
+  }));
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
