@@ -37,7 +37,7 @@
     ],
     "image": "/projects/marmitonic.jpg",
     "githubUrl": "https://github.com/MonacoTac/MarmiTonic",
-    "featured": false,
+    "featured": true,
     "category": "fullstack"
   },
   {
@@ -102,7 +102,7 @@
     ],
     "image": "/projects/backtesting.jpg",
     "githubUrl": "https://github.com/WiredMind2/backtesting",
-    "featured": true,
+    "featured": false,
     "category": "fullstack"
   },
   {
