@@ -1,6 +1,18 @@
 {
   "researchExperiences": [
     {
+      "title": "Research Intern - Behavioral Changes caused by Virtual Reality",
+      "period": "June 2023 - August 2023",
+      "description": "Conducted a 2-month research internship on behavioral changes caused by Virtual Reality at Suwa University, Nagano, Japan. Worked with Professor Yamaguchi Takehiko.",
+      "achievements": [
+        "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
+        "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
+        "Developed VR prototypes using Unity for research simulations and user testing",
+        "Presented research findings at university symposiums"
+      ],
+      "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
+    },
+    {
       "title": "Research Intern - Computer-Aided Design and Fabrication of Carbon Fiber Aircraft",
       "period": "April 2024",
       "description": "Participated in the 2024 NPU Sino-Euro Spring School at Northwestern Polytechnical University (NPU), the world's #2 university in Aerospace Engineering, in Xi'an, China. Worked with Professor Lubin Huo on carbon fiber applications in the aircraft industry.",
@@ -11,18 +23,6 @@
         "Participated in hands-on sessions and research discussions with leading aerospace engineering professors and students"
       ],
       "technologies": ["Computer-Aided Design (CAD)", "Composite Materials", "Carbon Fiber Technology", "Aerospace Engineering", "Manufacturing Processes"]
-    },
-    {
-      "title": "Research Intern - Behavioral Changes due to Virtual Reality",
-      "period": "June 2023 - August 2023",
-      "description": "Conducted a 2-month research internship on behavioral changes due to Virtual Reality at Suwa University, Nagano, Japan. Worked with Professor Yamaguchi Takehiko.",
-      "achievements": [
-        "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
-        "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
-        "Developed VR prototypes using Unity for research simulations and user testing",
-        "Presented research findings at university symposiums"
-      ],
-      "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
     }
   ],
   "competitionLeadershipExperiences": [
