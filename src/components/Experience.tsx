@@ -11,56 +11,114 @@ interface Experience {
   technologies: string[];
 }
 
-const experiences: Experience[] = experiencesData as Experience[];
+interface ExperiencesData {
+  researchExperiences: Experience[];
+  competitionLeadershipExperiences: Experience[];
+}
+
+const { researchExperiences, competitionLeadershipExperiences }: ExperiencesData = experiencesData as ExperiencesData;
 
 export default function Experience() {
   return (
     <section id="experience" className="experience-section">
       <div className="section-container">
         <div className="section-header">
+          <span className="section-label">Research work & state-of-the-art projects</span>
+          <h2 className="section-title">Research Experiences</h2>
+          <div className="section-divider"></div>
+        </div>
+
+        {/* Research Experiences Section */}
+        <div className="experience-section">
+          <div className="experience-timeline">
+            {researchExperiences.map((exp, index) => (
+              <div
+                key={index}
+                className={`timeline-item ${
+                  index % 2 === 0 ? "timeline-left" : "timeline-right"
+                }`}
+              >
+                <div className="timeline-marker">
+                  <div className="timeline-dot"></div>
+                </div>
+                <div className="timeline-content">
+                  <div className="timeline-header">
+                    <h3 className="timeline-role">{exp.title}</h3>
+                    <div className="timeline-period">{exp.period}</div>
+                  </div>
+
+                  <p className="timeline-description">{exp.description}</p>
+
+                  <div className="timeline-achievements">
+                    <strong>Key Achievements:</strong>
+                    <ul>
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i}>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="timeline-technologies">
+                    {exp.technologies.map((tech, i) => (
+                      <span key={i} className="tech-badge">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section-header">
           <span className="section-label">Competitions & leadership</span>
           <h2 className="section-title">Achievements & Experience</h2>
           <div className="section-divider"></div>
         </div>
 
-        <div className="experience-timeline">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className={`timeline-item ${
-                index % 2 === 0 ? "timeline-left" : "timeline-right"
-              }`}
-            >
-              <div className="timeline-marker">
-                <div className="timeline-dot"></div>
-              </div>
-              <div className="timeline-content">
-                <div className="timeline-header">
-                  <h3 className="timeline-role">{exp.title}</h3>
-                  <div className="timeline-period">{exp.period}</div>
+        {/* Competitions & Leadership Achievements Section */}
+        <div className="experience-section">
+          {/* <h3 className="experience-section-title">Competitions & Leadership Achievements</h3> */}
+          <div className="experience-timeline">
+            {competitionLeadershipExperiences.map((exp, index) => (
+              <div
+                key={index}
+                className={`timeline-item ${
+                  index % 2 === 0 ? "timeline-left" : "timeline-right"
+                }`}
+              >
+                <div className="timeline-marker">
+                  <div className="timeline-dot"></div>
                 </div>
+                <div className="timeline-content">
+                  <div className="timeline-header">
+                    <h3 className="timeline-role">{exp.title}</h3>
+                    <div className="timeline-period">{exp.period}</div>
+                  </div>
 
-                <p className="timeline-description">{exp.description}</p>
+                  <p className="timeline-description">{exp.description}</p>
 
-                <div className="timeline-achievements">
-                  <strong>Key Achievements:</strong>
-                  <ul>
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
+                  <div className="timeline-achievements">
+                    <strong>Key Achievements:</strong>
+                    <ul>
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i}>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="timeline-technologies">
+                    {exp.technologies.map((tech, i) => (
+                      <span key={i} className="tech-badge">
+                        {tech}
+                      </span>
                     ))}
-                  </ul>
-                </div>
-
-                <div className="timeline-technologies">
-                  {exp.technologies.map((tech, i) => (
-                    <span key={i} className="tech-badge">
-                      {tech}
-                    </span>
-                  ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="experience-cta">

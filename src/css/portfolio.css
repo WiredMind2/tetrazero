@@ -959,6 +959,31 @@ section {
 }
 
 /* ===== Experience Section ===== */
+.experience-section {
+  margin-bottom: 60px;
+}
+
+.experience-section-title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.experience-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+}
+
 .experience-timeline {
   position: relative;
   padding: 40px 0;

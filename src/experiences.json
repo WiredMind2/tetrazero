@@ -1,40 +1,56 @@
-[
-  {
-    "title": "Competition Achievements",
-    "period": "2020 - 2025",
-    "description": "Competed in multiple international and national computer science competitions.",
-    "achievements": [
-      "Part of the INSA Lyon ICPC team (2024, 2025)",
-      "3rd in France in ICPC (SWERC 2025), I'm going to compete at the 2026 ICPC European Championship",
-      "4 times finalist in Prologin (2022, 2023, 2024, 2025)",
-      "1st place in a France-IOI contest (Castor Informatique 2020) among more than 500,000 participants",
-      "1st place in Match'Up Coding Battle (formerly Le Shaker) 2020 among more than 2000 participants",
-      "Now responsible for designing contest exercises"
-    ],
-    "technologies": ["Algorithm Design", "C/C++", "Python", "Competitive Programming", "Algorithm Optimization", "Problem Solving", "Programming Efficiency"]
-  },
-  {
-    "title": "VR Research Intern at Suwa University",
-    "period": "June 2023 - August 2023",
-    "description": "Conducted a 2-month research internship at Suwa University on behavioral changes due to Virtual Reality.",
-    "achievements": [
-      "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
-      "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
-      "Developed VR prototypes using Unity for research simulations and user testing",
-      "Presented research findings at university symposiums"
-    ],
-    "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
-  },
-  {
-    "title": "Volunteer & Community Leader at INSAlgo & Tech Communities",
-    "period": "2023 - 2025",
-    "description": "Active member and organizer in tech communities, leading initiatives to foster learning, collaboration, and professional development in computer science and programming.",
-    "achievements": [
-      "President of INSAlgo (2025)",
-      "Vice-President of AEDI (2025)",
-      "Treasurer of INSAlgo (2024)",
-      "Treasurer of ADT (2023)"
-    ],
-    "technologies": ["Event Organization", "Team Coordination", "Leadership", "Mentorship", "Project Management"]
-  }
-]
+{
+  "researchExperiences": [
+    {
+      "title": "Research Intern - Computer-Aided Design and Fabrication of Carbon Fiber Aircraft",
+      "period": "April 2024",
+      "description": "Participated in the 2024 NPU Sino-Euro Spring School at Northwestern Polytechnical University (NPU), the world's #2 university in Aerospace Engineering, in Xi'an, China. Worked with Professor Lubin Huo on carbon fiber applications in the aircraft industry.",
+      "achievements": [
+        "Learned to leverage computer tools for designing and manufacturing carbon fiber-reinforced resin matrix composite laminated aircraft crafts",
+        "Studied advanced techniques for computer-aided design (CAD) and fabrication of composite materials",
+        "Explored applications of carbon fiber composites in improving aircraft performance and fuel efficiency",
+        "Participated in hands-on sessions and research discussions with leading aerospace engineering professors and students"
+      ],
+      "technologies": ["Computer-Aided Design (CAD)", "Composite Materials", "Carbon Fiber Technology", "Aerospace Engineering", "Manufacturing Processes"]
+    },
+    {
+      "title": "Research Intern - Behavioral Changes due to Virtual Reality",
+      "period": "June 2023 - August 2023",
+      "description": "Conducted a 2-month research internship on behavioral changes due to Virtual Reality at Suwa University, Nagano, Japan. Worked with Professor Yamaguchi Takehiko.",
+      "achievements": [
+        "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
+        "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
+        "Developed VR prototypes using Unity for research simulations and user testing",
+        "Presented research findings at university symposiums"
+      ],
+      "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
+    }
+  ],
+  "competitionLeadershipExperiences": [
+    {
+      "title": "Competition Achievements",
+      "period": "2020 - 2026",
+      "description": "Competed in multiple international and national computer science competitions.",
+      "achievements": [
+        "Part of the INSA Lyon ICPC team (2024, 2025)",
+        "3rd in France in ICPC (SWERC 2025), I'm going to compete at the 2026 ICPC European Championship",
+        "4 times finalist in Prologin (2022, 2023, 2024, 2025)",
+        "1st place in a France-IOI contest (Castor Informatique 2020) among more than 500,000 participants",
+        "1st place in Match'Up Coding Battle (formerly Le Shaker) 2020 among more than 2000 participants",
+        "Now responsible for designing contest exercises"
+      ],
+      "technologies": ["Algorithm Design", "C/C++", "Python", "Competitive Programming", "Algorithm Optimization", "Problem Solving", "Programming Efficiency"]
+    },
+    {
+      "title": "Volunteer & Community Leader at INSAlgo & Tech Communities",
+      "period": "2023 - 2025",
+      "description": "Active member and organizer in tech communities, leading initiatives to foster learning, collaboration, and professional development in computer science and programming.",
+      "achievements": [
+        "President of INSAlgo (2025)",
+        "Vice-President of AEDI (2025)",
+        "Treasurer of INSAlgo (2024)",
+        "Treasurer of ADT (2023)"
+      ],
+      "technologies": ["Event Organization", "Team Coordination", "Leadership", "Mentorship", "Project Management"]
+    }
+  ]
+}
