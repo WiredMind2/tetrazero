@@ -7,10 +7,12 @@ import { tsParticles, type Container, type Engine, type ISourceOptions } from "@
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { useAnimationQuality } from "./components/AnimationQualityProvider";
 
 export default function ParticleJS() {
 	const [isClient, setIsClient] = useState(false);
 	const [init, setInit] = useState(false);
+	const { qualityLevel } = useAnimationQuality();
 
 
 	// this should be run only once per application lifetime
@@ -51,98 +53,118 @@ export default function ParticleJS() {
 
 
 	const options: ISourceOptions = useMemo(
-		() => ({
-			fpsLimit: 60,
-			interactivity: {
-				events: {
-					onClick: {
-						enable: true,
-						mode: "push",
-					},
-					onHover: {
-						enable: true,
-						mode: "repulse",
-					},
-				},
-				modes: {
-					push: {
-						quantity: 4,
-					},
-					repulse: {
-						distance: 200,
-						duration: 0.4,
-					},
-				},
-			},
-			particles: {
-				color: {
-					value: "#6366f1",
-				},
-				links: {
-					color: "#6366f1",
-					distance: 150,
-					enable: true,
-					opacity: 0.3,
-					width: 1,
-				},
-				move: {
-					direction: "none",
-					enable: true,
-					outModes: {
-						default: "bounce",
-					},
-					random: false,
-					speed: 3,
-					straight: false,
-				},
-				number: {
-					density: {
-						enable: true,
-						height: 1000,
-						width: 1000,
-					},
-					value: 100,
-				},
-				opacity: {
-					value: 0.5,
-				},
-				shape: {
-					type: "circle",
-				},
-				size: {
-					value: { min: 1, max: 5 },
-				},
-			},
-			detectRetina: true,
-			fullScreen: { enable: false },
-			responsive: [
-				{
-					maxWidth: 768,
-					options: {
-						particles: {
-							number: {
-								value: 30,
-							},
-							links: {
-								enable: false,
-							},
-							move: {
-								speed: 1,
-							},
+		() => {
+			// Adjust settings based on quality level
+			const getParticleCount = () => {
+				if (qualityLevel === 'disabled') return 0;
+				if (qualityLevel === 'low') return 20;
+				if (qualityLevel === 'medium') return 50;
+				return 100; // high
+			};
+
+			const getSpeed = () => {
+				if (qualityLevel === 'disabled') return 0;
+				if (qualityLevel === 'low') return 1;
+				if (qualityLevel === 'medium') return 2;
+				return 3; // high
+			};
+
+			const hasInteractivity = qualityLevel === 'high' || qualityLevel === 'medium';
+			const hasLinks = qualityLevel === 'high' || qualityLevel === 'medium';
+
+			return {
+				fpsLimit: 60,
+				interactivity: {
+					events: {
+						onClick: {
+							enable: hasInteractivity,
+							mode: "push",
 						},
-						interactivity: {
-							events: {
-								onHover: {
+						onHover: {
+							enable: hasInteractivity && qualityLevel === 'high',
+							mode: "repulse",
+						},
+					},
+					modes: {
+						push: {
+							quantity: qualityLevel === 'high' ? 4 : 2,
+						},
+						repulse: {
+							distance: qualityLevel === 'high' ? 200 : 100,
+							duration: 0.4,
+						},
+					},
+				},
+				particles: {
+					color: {
+						value: "#6366f1",
+					},
+					links: {
+						color: "#6366f1",
+						distance: 150,
+						enable: hasLinks,
+						opacity: qualityLevel === 'high' ? 0.3 : 0.2,
+						width: 1,
+					},
+					move: {
+						direction: "none",
+						enable: qualityLevel !== 'disabled',
+						outModes: {
+							default: "bounce",
+						},
+						random: false,
+						speed: getSpeed(),
+						straight: false,
+					},
+					number: {
+						density: {
+							enable: true,
+							height: 1000,
+							width: 1000,
+						},
+						value: getParticleCount(),
+					},
+					opacity: {
+						value: 0.5,
+					},
+					shape: {
+						type: "circle",
+					},
+					size: {
+						value: { min: 1, max: 5 },
+					},
+				},
+				detectRetina: true,
+				fullScreen: { enable: false },
+				responsive: [
+					{
+						maxWidth: 768,
+						options: {
+							particles: {
+								number: {
+									value: qualityLevel === 'disabled' ? 0 : qualityLevel === 'low' ? 10 : 30,
+								},
+								links: {
 									enable: false,
+								},
+								move: {
+									speed: qualityLevel === 'disabled' ? 0 : 1,
+								},
+							},
+							interactivity: {
+								events: {
+									onHover: {
+										enable: false,
+									},
 								},
 							},
 						},
 					},
-				},
-			],
-		}), [],);
+				],
+			};
+		}, [qualityLevel]);
 
-	if (init) {
+	if (init && qualityLevel !== 'disabled') {
 		return (
 			<>
 				<div style={{ position: 'relative', width: '100%', height: '100%' }}>

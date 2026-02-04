@@ -561,6 +561,19 @@ section {
   }
 }
 
+/* Animation quality adjustments */
+.scrolling-icons-container.animation-disabled .scrolling-content {
+  animation: none !important;
+}
+
+.scrolling-icons-container.animation-low .scrolling-content {
+  animation-duration: 80s !important; /* Slower animation */
+}
+
+.scrolling-icons-container.animation-medium .scrolling-content {
+  animation-duration: 60s !important; /* Slightly slower animation */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
