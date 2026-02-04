@@ -20,9 +20,9 @@ function App() {
 				<ParticleJS />
 				<Hero />
 				<About />
-				<Skills />
 				<Projects />
 				<Experience />
+				<Skills />
 				<Contact />
 			</main>
 			<Footer />
